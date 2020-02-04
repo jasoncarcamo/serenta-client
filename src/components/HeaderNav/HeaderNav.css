@@ -1,0 +1,37 @@
+#nav-header{
+    position: absolute;
+    padding: 0;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 4em;
+}
+
+#nav-container {
+    display: flex;
+    justify-content: flex-end;
+    margin: 4em 0 0 0;
+    padding: 0;
+}
+
+#nav-container button{
+    margin: 0 3em 0 3em;
+    width: 6em;
+    height: 3em;
+    border: none;
+    background-color: white;
+    border-radius: 1em;
+}
+
+.nav-link{
+    font-size: 1em;
+    color: white;
+    text-shadow: .1em .1em .05em black;
+}
+
+@media screen and (max-width: 770px){
+    #nav-container button{
+        margin: 0 1em 0 1em;
+    }
+}
