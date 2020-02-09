@@ -32,12 +32,15 @@
 .autocomplete-dropdown-container{
     position: relative;
     width: 37em;
-    top: 0;
+    top: -1em;
     left: 3.7em;
     z-index: 1;
+    background-color: white;
 }
 
-.suggestion-item-active{
+.suggestion-item--active{
+    padding:0 0 0 1em;
+    margin: 0 0 0 2em;
 }
 
 @media screen and (max-width: 770px){
@@ -50,9 +53,9 @@
 
     .autocomplete-dropdown-container{
         position: relative;
-        width: 150%;
-        top: 3.5em;
-        left: -2.7em;
+        width: 100%;
+        top: 2.5em;
+        left: 5%;
         z-index: 1;
     }
     

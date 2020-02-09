@@ -4,6 +4,9 @@ import PlacesAutoComplete, {
     geocodeByAddress,
     getLatLng
 } from "react-places-autocomplete";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 export default class SearchBox extends React.Component{
     constructor(props){
@@ -49,12 +52,24 @@ export default class SearchBox extends React.Component{
         console.log(address)
     }
 
+    handleSearch = ()=>{
+        console.log(process.env.REACT_APP_API_KEY)
+        fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=40.681543999999995,-73.40622259999999&key=AIzaSyAAPqYeOSuJKs63H8A4NwaKp8fjVZo_jao`)
+            .then( res => {
+                return res.json();
+            })
+            .then( resData => {
+                console.log(resData)
+            })
+            .catch( err => { console.log(err)})
+    }
+
     render(){
         return (
             <form
             onSubmit={(e)=>{ e.preventDefault()}}
                 id="search-location">
-
+                
                 <PlacesAutoComplete
                     value={this.state.address}
                     onChange={this.handleAddress}
@@ -64,7 +79,7 @@ export default class SearchBox extends React.Component{
                 <div>
                     <input
                     {...getInputProps({
-                        placeholder: 'Search Places ...',
+                        placeholder: 'Search areas near you ...',
                         className: 'location-search-input',
                     })}
                     />
@@ -79,8 +94,8 @@ export default class SearchBox extends React.Component{
                         : 'suggestion-item';
                         // inline style for demonstration purpose
                         const style = suggestion.active
-                        ? { backgroundColor: '#fafafa', cursor: 'pointer' }
-                        : { backgroundColor: '#ffffff', cursor: 'pointer' };
+                        ? { backgroundColor: '#fafafa', cursor: 'pointer', margin: "1em 0", padding: ".5em 1em"}
+                        : { backgroundColor: '#ffffff', cursor: 'pointer', margin: "1em 0", padding: ".5em 1em" };
 
                         return (
                         <div
@@ -101,7 +116,7 @@ export default class SearchBox extends React.Component{
                 </PlacesAutoComplete>
 
                 <button
-                    onClick={this.cick}
+                    onClick={this.handleSearch}
                     style={{
                         width: "3.7em", 
                         height: "3.7em",
