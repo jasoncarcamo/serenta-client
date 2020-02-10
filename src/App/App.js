@@ -6,7 +6,7 @@ import Login from "../components/Login/Login";
 import Register from "../components/Register/Register";
 import PostAdRegister from "../components/PostAdRegister/PostAdRegister";
 import Map from "../components/Map/Map";
-import SearchBox from "../components/SearchBoxes/SearchSpaces/SearchSpaces";
+import SearchSpaces from "../components/SearchBoxes/SearchSpaces/SearchSpaces";
 import {Route} from "react-router-dom";
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
     <section>
 
         <Route exact path="/" component={HeaderNav}></Route>
-        <Route exact path="/" component={SearchBox}></Route>
+        <Route exact path="/" component={SearchSpaces}></Route>
         <Route exact path="/" component={Map}></Route>
 
         <Route exact path="/login" component={Login}></Route>

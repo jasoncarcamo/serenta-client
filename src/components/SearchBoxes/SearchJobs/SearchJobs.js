@@ -8,7 +8,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-export default class SearchSpaces extends React.Component{
+export default class SearchJobs extends React.Component{
     constructor(props){
         super(props);
         this.state = {
@@ -32,7 +32,7 @@ export default class SearchSpaces extends React.Component{
     };
 
     error = (error)=>{
-        console.log("Error")
+        console.log("Error");
     }
 
     cick = (e)=>{
