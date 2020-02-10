@@ -38,7 +38,7 @@ export default class Register extends React.Component{
                         <label htmlFor="register-confirm-password">Retype password</label>
                         <input id="register-confirm-password" type="password"></input>
 
-                        <button type="submit"></button>
+                        <button type="submit">Register</button>
                     </fieldset>
                 </form>
             </section>

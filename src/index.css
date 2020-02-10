@@ -31,6 +31,10 @@ code {
     monospace;
 }
 
+button{
+  outline: none;
+}
+
 @media screen and (max-width: 770px){
     body{
         font-size: 16px;

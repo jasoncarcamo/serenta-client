@@ -1,5 +1,5 @@
 import React from "react";
-import "./SearchBox.css";
+import "./SearchSpaces.css";
 import PlacesAutoComplete, {
     geocodeByAddress,
     getLatLng

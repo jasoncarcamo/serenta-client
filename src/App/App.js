@@ -6,7 +6,7 @@ import Login from "../components/Login/Login";
 import Register from "../components/Register/Register";
 import PostAdRegister from "../components/PostAdRegister/PostAdRegister";
 import Map from "../components/Map/Map";
-import SearchBox from "../components/SearchBox/SearchBox";
+import SearchBox from "../components/SearchBoxes/SearchSpaces/SearchSpaces";
 import {Route} from "react-router-dom";
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
         <Route exact path="/login" component={Login}></Route>
         <Route exact path="/register" component={Register}></Route>
         <Route exact path="/post-ad" component={PostAdRegister}></Route>
-        <Route exact path="/post-ad/register" component={PostAdRegister}></Route>
+        <Route exact path="/post-ad/register" component={Register}></Route>
 
     </section>
   );

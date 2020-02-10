@@ -1,7 +1,6 @@
 import React from "react";
 import GoogleMap from "google-map-react";
 import {Route} from "react-router-dom";
-import SearchBox from "../SearchBox/SearchBox";
 
 export default class Map extends React.Component{
     constructor(props){

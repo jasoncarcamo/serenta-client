@@ -38,7 +38,7 @@ export default class PostAdRegister extends React.Component{
                         <label htmlFor="register-ad-confirm-password">Retype password</label>
                         <input id="register-ad-confirm-password" type="password"></input>
 
-                        <button type="submit"></button>
+                        <button type="submit">Post Ad</button>
                     </fieldset>
                 </form>
             </section>
