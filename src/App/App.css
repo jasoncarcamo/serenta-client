@@ -7,6 +7,11 @@
   pointer-events: none;
 }
 
+#routes-container{
+  padding: 0;
+  margin: 0;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

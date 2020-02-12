@@ -1,22 +1,23 @@
 #nav-header{
     position: absolute;
+    margin: 0;
     padding: 0;
     z-index: 2;
-    top: 0;
+    top: 1.25em;
     right: 0;
-    width: 50%;
-    height: 4em;
 }
 
 #nav-container {
     display: flex;
+    position: relative;
     justify-content: flex-end;
-    margin: 4em 0 0 0;
+    align-items: center;
+    margin: 0;
     padding: 0;
 }
 
 #nav-container button{
-    margin: 0 3em 0 3em;
+    margin: 0 3em 0 -2.5em;
     width: 6em;
     height: 3em;
     border: none;
@@ -27,11 +28,12 @@
 .nav-link{
     font-size: 1em;
     color: white;
+    padding-top: .5em;
     text-shadow: .1em .1em .05em black;
 }
 
 @media screen and (max-width: 770px){
     #nav-container button{
-        margin: 0 1em 0 1em;
+        margin: 0 1em 0 -.5em;
     }
 }

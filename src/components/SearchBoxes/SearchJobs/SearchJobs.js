@@ -1,5 +1,5 @@
 import React from "react";
-import "./SearchSpaces.css";
+import "./SearchJobs.css";
 import PlacesAutoComplete, {
     geocodeByAddress,
     getLatLng
@@ -79,10 +79,25 @@ export default class SearchJobs extends React.Component{
                 <div>
                     <input
                     {...getInputProps({
-                        placeholder: 'Search areas near you ...',
+                        placeholder: 'What job title are you looking for? ...',
                         className: 'location-search-input',
                     })}
                     />
+
+                    <button
+                        onClick={this.handleSearch}
+                        style={{
+                            width: "3.7em", 
+                            height: "3.7em",
+                            position: "relative",
+                            top: ".2em",
+                            right: "4.4em",
+                            padding: 0,
+                            margin: "0 0 0 -1em",
+                            borderRadius: "100%",
+                            border: "none"
+                        }}
+                    >Find jobs</button>
 
                     <div className="autocomplete-dropdown-container">
 
@@ -115,20 +130,7 @@ export default class SearchJobs extends React.Component{
 
                 </PlacesAutoComplete>
 
-                <button
-                    onClick={this.handleSearch}
-                    style={{
-                        width: "3.7em", 
-                        height: "3.7em",
-                        position: "relative",
-                        top: ".2em",
-                        right: "4.4em",
-                        padding: 0,
-                        margin: 0,
-                        borderRadius: "100%",
-                        border: "none"
-                    }}
-                >Find</button>
+                
             </form>
         );
     };

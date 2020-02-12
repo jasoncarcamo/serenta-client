@@ -1,6 +1,7 @@
 import React from "react";
-import GoogleMap from "google-map-react";
+import GoogleMap,{} from "google-map-react";
 import {Route} from "react-router-dom";
+import Marker from "./Marker";
 
 export default class Map extends React.Component{
     constructor(props){
@@ -11,16 +12,17 @@ export default class Map extends React.Component{
         };
     };
 
+
     componentDidMount(){
         this.cick();
-        
+        console.log(this.props)
     }
+
+    
 
     success = (position)=>{
         let lat = position.coords.latitude;
         let long = position.coords.longitude;
-
-        console.log( lat, long, position.coords.accuracy);
 
         this.setState({
             lat,
@@ -36,12 +38,21 @@ export default class Map extends React.Component{
     cick = ()=>{
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(this.success, this.Error);
-          } else { 
-            console.log("Geolocation is not supported by this browser. ");
-          }
+        } else { 
+        console.log("Geolocation is not supported by this browser. ");
+        };
+    }
+
+    change = ({ center, zoom}) => {
+        console.log(center, zoom)
+        center = {
+            lat: this.state.lat,
+            lng: this.state.l0ng
+        }
     }
 
     render(){
+        console.log(this.props)
         return (
             
             <GoogleMap
@@ -51,24 +62,23 @@ export default class Map extends React.Component{
                     language: "en",
                     region: "US"
                 }}
+                onChange={this.change}
+                yesIWantToUseGoogleMapApiInternals
+                zoom={this.props.zoom}
+                zoom={this.props.zoom}
+                center={this.props.center}
                 style={{
-                    position: "absolute",
-                    zIndex: 0,
-                    width: "100vw", 
-                    height: "100vh"
+                    flex: 1
                 }}
-                zoom={13}
-                center={{
-                    lat: this.state.lat || 0,
-                    lng: this.state.long || 0
-                    }}
-                    options={
-                        {
-                            fullscreenControl: false,
-                            mapTypeControl: true,
-                            mapTypeId: "hybrid"
-                        }
-                    }>
+                options={
+                    {
+                        fullscreenControl: false,
+                        mapTypeControl: false,
+                        mapTypeId: "hybrid",                            
+                    }
+                }
+            >
+                <Marker lat={40.6845436} lng={-73.4098946}/>
             </GoogleMap>            
         );
     };

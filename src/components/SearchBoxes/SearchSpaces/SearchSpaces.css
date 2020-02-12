@@ -1,13 +1,13 @@
 #search-location{
     display: flex;
     justify-content: center;
-    width: 100%;
+    width: 40em;
     padding: 0;
-    margin: 0;
+    margin: 0 0 0 -20em;
     position: absolute;
-    z-index: 3;  
-    top: 22%;
-    left: 0;
+    z-index: 2;  
+    top: 5em;
+    left: 50%;
 }
 
 #search-location input{
@@ -17,46 +17,70 @@
 #search-location input{
     display: block;
     position: relative;
-    height: 3.5em;
     width: 40em;
-    left: 2.3em;
+    height: 3em;
     font-size: 1em;
     padding: 0 0 0 3em;
-    margin: 0;
+    z-index: 2;
+    margin: 0 auto !important;
     border-radius: 3em;
     border: .1em solid lightgray;
     color: black;
     outline: none;
 }
 
+#search-location button{
+    width: 3.5em;
+    height: 3.5em;
+    position: absolute;
+    z-index: 2;
+    top: .2em;
+    right: .2em;
+    padding: 0;
+    margin: 0 0 0 -1em;
+    border-radius: 100%;
+    border: none;
+}
+
 .autocomplete-dropdown-container{
     position: relative;
     width: 37em;
-    top: -1em;
-    left: 3.7em;
+    top: -2em;
+    left: 1.75em;
     z-index: 1;
     background-color: white;
+    border: .2em solid black;
 }
 
-.suggestion-item--active{
-    padding:0 0 0 1em;
+.suggestion-item{
+    width: 100%;
+    padding: 0 1em;
     margin: 0 0 0 2em;
 }
 
 @media screen and (max-width: 770px){
+    #search-location{
+        width: 100vw;
+        margin: 0;
+        left: 0;
+    }
+
     #search-location input{
         display: block;
         position: absolute;
         width: 100%;
         left: 0;
-    }     
+    }  
+    
+    #search-location button{
+        top: 0;
+    }
 
     .autocomplete-dropdown-container{
         position: relative;
-        width: 100%;
-        top: 2.5em;
-        left: 5%;
-        z-index: 1;
+        width: 95%;
+        top: 2em;
+        left: .5em;
     }
     
 }

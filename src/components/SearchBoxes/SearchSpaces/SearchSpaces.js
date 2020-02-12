@@ -50,12 +50,17 @@ export default class SearchSpaces extends React.Component{
 
     handleSelect = (address)=>{
         console.log(address)
+        this.setState({ address })
     }
 
     handleSearch = ()=>{
         console.log(process.env.REACT_APP_API_KEY)
-        fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=40.681543999999995,-73.40622259999999&key=AIzaSyAAPqYeOSuJKs63H8A4NwaKp8fjVZo_jao`)
+        fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=11+rodney+place,+amityville,+ny&key=AIzaSyAAPqYeOSuJKs63H8A4NwaKp8fjVZo_jao`)
             .then( res => {
+                if(!res.ok){
+                    res.json().then( e => Promise.reject(e));
+                };
+
                 return res.json();
             })
             .then( resData => {
@@ -78,11 +83,16 @@ export default class SearchSpaces extends React.Component{
                     {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
                 <div>
                     <input
+                    value={this.state.address}
                     {...getInputProps({
                         placeholder: 'Search areas near you ...',
                         className: 'location-search-input',
                     })}
                     />
+
+                    <button
+                        onClick={this.handleSearch}
+                    >Find spaces</button>
 
                     <div className="autocomplete-dropdown-container">
 
@@ -94,8 +104,8 @@ export default class SearchSpaces extends React.Component{
                         : 'suggestion-item';
                         // inline style for demonstration purpose
                         const style = suggestion.active
-                        ? { backgroundColor: '#fafafa', cursor: 'pointer', margin: "1em 0", padding: ".5em 1em"}
-                        : { backgroundColor: '#ffffff', cursor: 'pointer', margin: "1em 0", padding: ".5em 1em" };
+                        ? { backgroundColor: 'lightgray', cursor: 'pointer', margin: "1em 0", padding: "1em 1em"}
+                        : { backgroundColor: '#ffffff', cursor: 'pointer', margin: "1em 0", padding: "1em 1em"};
 
                         return (
                         <div
@@ -115,20 +125,6 @@ export default class SearchSpaces extends React.Component{
 
                 </PlacesAutoComplete>
 
-                <button
-                    onClick={this.handleSearch}
-                    style={{
-                        width: "3.7em", 
-                        height: "3.7em",
-                        position: "relative",
-                        top: ".2em",
-                        right: "4.4em",
-                        padding: 0,
-                        margin: 0,
-                        borderRadius: "100%",
-                        border: "none"
-                    }}
-                >Find</button>
             </form>
         );
     };

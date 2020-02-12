@@ -1,0 +1,9 @@
+#filter-spaces-btn{
+    position: absolute;
+    z-index: 1;
+    width: 6.5em;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 1.5em;
+    font-size: 1em;
+}

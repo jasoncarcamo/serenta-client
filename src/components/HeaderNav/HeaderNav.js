@@ -10,6 +10,10 @@ export default class HeaderNav extends React.Component{
         };
     };
 
+    toLogin = ()=>{
+        this.props.history.push("/login")
+    }
+
     toRegister = ()=>{
         this.props.history.push("/post-ad/register");
     };
@@ -18,7 +22,7 @@ export default class HeaderNav extends React.Component{
         return (
             <header id="nav-header">
                 <nav id="nav-container">
-                    <NavLink to="/login" className="nav-link">Log In</NavLink>
+                    <button onClick={this.toLogin}>Log In</button>
                     <button onClick={this.toRegister}>Post Ad</button>
                 </nav>
             </header>
