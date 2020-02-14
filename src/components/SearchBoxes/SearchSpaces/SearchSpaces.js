@@ -49,13 +49,45 @@ export default class SearchSpaces extends React.Component{
     }
 
     handleSelect = (address)=>{
-        console.log(address)
-        this.setState({ address })
-    }
+        
+        this.setState({ address });
 
-    handleSearch = ()=>{
-        console.log(process.env.REACT_APP_API_KEY)
-        fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=11+rodney+place,+amityville,+ny&key=AIzaSyAAPqYeOSuJKs63H8A4NwaKp8fjVZo_jao`)
+    };
+
+    handleSearch = (e)=>{
+        e.preventDefault();
+        console.log(this.state.address);
+        let commasAmount = 0;
+        let zoom = 13;
+        let address = this.state.address.toLowerCase();
+
+        address = address.split(" ");
+
+        for( let i = 0; i < address.length; i++){
+            
+            if(address[i].substring( address[i].length - 1) === ","){
+                console.log("Has")
+                commasAmount++
+            }
+        }
+
+        if(commasAmount === 0){
+            zoom = 4;
+        }
+
+        if(commasAmount === 1){
+            zoom = 7
+        }
+
+        if( commasAmount >= 2){
+            zoom = 13;
+        }
+
+
+
+        console.log(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyAAPqYeOSuJKs63H8A4NwaKp8fjVZo_jao`);
+
+        fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyAAPqYeOSuJKs63H8A4NwaKp8fjVZo_jao`)
             .then( res => {
                 if(!res.ok){
                     res.json().then( e => Promise.reject(e));
@@ -64,7 +96,9 @@ export default class SearchSpaces extends React.Component{
                 return res.json();
             })
             .then( resData => {
-                console.log(resData)
+
+                this.props.searchArea(resData.results[0].geometry.location.lat, resData.results[0].geometry.location.lng, zoom);
+
             })
             .catch( err => { console.log(err)})
     }
@@ -72,8 +106,10 @@ export default class SearchSpaces extends React.Component{
     render(){
         return (
             <form
-            onSubmit={(e)=>{ e.preventDefault()}}
+            onSubmit={this.handleSearch}
                 id="search-location">
+
+                
                 
                 <PlacesAutoComplete
                     value={this.state.address}
@@ -90,8 +126,7 @@ export default class SearchSpaces extends React.Component{
                     })}
                     />
 
-                    <button
-                        onClick={this.handleSearch}
+                    <button type="submit"
                     >Find spaces</button>
 
                     <div className="autocomplete-dropdown-container">

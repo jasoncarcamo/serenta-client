@@ -1,5 +1,5 @@
 import React from "react";
-import GoogleMap,{} from "google-map-react";
+import GoogleMap from "google-map-react";
 import {Route} from "react-router-dom";
 import Marker from "./Marker";
 
@@ -44,7 +44,7 @@ export default class Map extends React.Component{
     }
 
     change = ({ center, zoom}) => {
-        console.log(center, zoom)
+
         center = {
             lat: this.state.lat,
             lng: this.state.l0ng
@@ -62,9 +62,9 @@ export default class Map extends React.Component{
                     language: "en",
                     region: "US"
                 }}
+                
                 onChange={this.change}
                 yesIWantToUseGoogleMapApiInternals
-                zoom={this.props.zoom}
                 zoom={this.props.zoom}
                 center={this.props.center}
                 style={{
@@ -74,11 +74,14 @@ export default class Map extends React.Component{
                     {
                         fullscreenControl: false,
                         mapTypeControl: false,
-                        mapTypeId: "hybrid",                            
+                        mapTypeId: "hybrid"                    
                     }
                 }
+                resetBoundsOnResize={false}
             >
+                <Marker lat={this.props.center.lat} lng={this.props.center.lng}/>
                 <Marker lat={40.6845436} lng={-73.4098946}/>
+                <Marker lat={40.6686041} lng={-73.4094001}/>
             </GoogleMap>            
         );
     };
