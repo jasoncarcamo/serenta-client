@@ -5,10 +5,6 @@ export default class FilterSpaces extends React.Component{
     render(){
         return (
             <>  
-                <section>
-                    
-                </section>
-
                 <button id="filter-spaces-btn">Filter spaces</button>
             </>
         )

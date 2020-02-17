@@ -24,7 +24,7 @@ export default class SearchJobs extends React.Component{
     success = (position)=>{
         let lat = position.coords.latitude;
         let long = position.coords.longitude;
-        console.log( lat, long);
+        
         this.setState({
             lat,
             long
@@ -44,8 +44,9 @@ export default class SearchJobs extends React.Component{
     }
 
     handleAddress = (address)=>{
-        console.log(address)
-        this.setState({ address })
+        
+        this.setState({ address });
+
     }
 
     handleSelect = (address)=>{
@@ -53,7 +54,7 @@ export default class SearchJobs extends React.Component{
     }
 
     handleSearch = ()=>{
-        console.log(process.env.REACT_APP_API_KEY)
+        
         fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=40.681543999999995,-73.40622259999999&key=AIzaSyAAPqYeOSuJKs63H8A4NwaKp8fjVZo_jao`)
             .then( res => {
                 return res.json();

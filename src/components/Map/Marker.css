@@ -1,8 +1,38 @@
 .marker{
+    margin: 0;
+    padding: 0;
     position: absolute;
     transform: translate(-50%, -50%);
     background-color: white;
     width: 2.5em;
     height: 2.5em;
     border-radius: 100%;
+    border: .2em solid black;
+    cursor: pointer;   
+    z-index: 0 !important;
+}
+
+
+.marker:hover{
+    background-color: blue;
+    border: .2em solid red;
+}
+
+.ad-info{
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    height: auto;
+    width: 50em;  
+    top: 1em;
+    left: .75em;
+    border: .1em solid black;
+    z-index: 4 !important;
+    background-color: white;
+}
+
+@media screen and (max-width: 770px){
+    .ad-info{
+        width: 25em;  
+    }
 }

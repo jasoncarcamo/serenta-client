@@ -15,10 +15,12 @@ export default class Map extends React.Component{
 
     componentDidMount(){
         this.cick();
-        console.log(this.props)
+        
     }
 
-    
+    componentWillReceiveProps(){
+        
+    }
 
     success = (position)=>{
         let lat = position.coords.latitude;
@@ -47,12 +49,23 @@ export default class Map extends React.Component{
 
         center = {
             lat: this.state.lat,
-            lng: this.state.l0ng
+            lng: this.state.lng
         }
     }
 
+    renderAds = ()=>{
+        let ads = this.props.ads;
+
+        ads = ads.map( ( ad, index) => {
+            
+            return <Marker key={index} ad={ad} lat={ad.lat} lng={ad.lng}/>
+        });
+
+        return ads;
+    }
+
     render(){
-        console.log(this.props)
+        
         return (
             
             <GoogleMap
@@ -64,7 +77,6 @@ export default class Map extends React.Component{
                 }}
                 
                 onChange={this.change}
-                yesIWantToUseGoogleMapApiInternals
                 zoom={this.props.zoom}
                 center={this.props.center}
                 style={{
@@ -79,9 +91,8 @@ export default class Map extends React.Component{
                 }
                 resetBoundsOnResize={false}
             >
-                <Marker lat={this.props.center.lat} lng={this.props.center.lng}/>
-                <Marker lat={40.6845436} lng={-73.4098946}/>
-                <Marker lat={40.6686041} lng={-73.4094001}/>
+                {this.renderAds()}
+                
             </GoogleMap>            
         );
     };

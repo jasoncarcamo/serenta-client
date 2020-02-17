@@ -3,6 +3,7 @@ import logo from '../logo.svg';
 import './App.css';
 import {Route} from "react-router-dom";
 import TokenService from "../Services/TokenService";
+import SpacesContext from "../Contexts/SpacesContext/SpacesContext";
 
 import HeaderNav from "../components/HeaderNav/HeaderNav";
 import Login from "../components/Login/Login";
@@ -18,6 +19,7 @@ class App extends React.Component {
     constructor(props){
         super(props);
         this.state = {
+            ads: [],
             searchSpaces: true,
             searchJobs: false,
             lat: 39.011902,
@@ -27,8 +29,15 @@ class App extends React.Component {
         }
     };
 
+    static contextType = SpacesContext;
+
     componentDidMount(){
+
         this.enableGps();
+        
+        this.setState({
+            ads: this.context.ads
+        });
     }
 
     enableGps = ()=>{
@@ -93,7 +102,7 @@ class App extends React.Component {
     }
 
     searchArea = (lat, lng, zoom)=>{
-        console.log(lat, lng)
+        
         this.setState({
             lat,
             long: lng,
@@ -102,6 +111,7 @@ class App extends React.Component {
     }
 
     render(){
+        console.log(this.state.ads)
         return (
             <section id="routes-container">
         
@@ -117,7 +127,7 @@ class App extends React.Component {
                         </ToggleSearchBox>
                 }></Route>
 
-                <Route exact path="/" render={(props)=> <Map {...props} lat={this.state.lat} lng={this.state.long} zoom={this.state.zoom} center={{
+                <Route exact path="/" render={(props)=> <Map {...props} ads={this.state.ads} lat={this.state.lat} lng={this.state.long} zoom={this.state.zoom} center={{
                     lat: this.state.lat,
                     lng: this.state.long
                 }}></Map>}></Route>

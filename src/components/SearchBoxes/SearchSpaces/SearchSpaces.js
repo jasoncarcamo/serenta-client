@@ -24,7 +24,7 @@ export default class SearchSpaces extends React.Component{
     success = (position)=>{
         let lat = position.coords.latitude;
         let long = position.coords.longitude;
-        console.log( lat, long);
+        
         this.setState({
             lat,
             long
@@ -44,7 +44,7 @@ export default class SearchSpaces extends React.Component{
     }
 
     handleAddress = (address)=>{
-        console.log(address)
+        
         this.setState({ address })
     }
 
@@ -56,7 +56,7 @@ export default class SearchSpaces extends React.Component{
 
     handleSearch = (e)=>{
         e.preventDefault();
-        console.log(this.state.address);
+        
         let commasAmount = 0;
         let zoom = 13;
         let address = this.state.address.toLowerCase();
@@ -66,8 +66,9 @@ export default class SearchSpaces extends React.Component{
         for( let i = 0; i < address.length; i++){
             
             if(address[i].substring( address[i].length - 1) === ","){
-                console.log("Has")
-                commasAmount++
+
+                commasAmount++;
+
             };
 
         };
@@ -83,10 +84,6 @@ export default class SearchSpaces extends React.Component{
         if( commasAmount >= 2){
             zoom = 13;
         };
-
-
-
-        console.log(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyAAPqYeOSuJKs63H8A4NwaKp8fjVZo_jao`);
 
         fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyAAPqYeOSuJKs63H8A4NwaKp8fjVZo_jao`)
             .then( res => {
