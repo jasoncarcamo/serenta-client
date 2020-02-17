@@ -68,20 +68,21 @@ export default class SearchSpaces extends React.Component{
             if(address[i].substring( address[i].length - 1) === ","){
                 console.log("Has")
                 commasAmount++
-            }
-        }
+            };
+
+        };
 
         if(commasAmount === 0){
             zoom = 4;
-        }
+        };
 
         if(commasAmount === 1){
             zoom = 7
-        }
+        };
 
         if( commasAmount >= 2){
             zoom = 13;
-        }
+        };
 
 
 

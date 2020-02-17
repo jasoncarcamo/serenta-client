@@ -1,4 +1,5 @@
 import React from "react";
+import TokenService from "../../Services/TokenService";
 
 export default class PostAd extends React.Component{
     constructor(props){
@@ -58,14 +59,65 @@ export default class PostAd extends React.Component{
         this.setState({ price: e.target.value});
     }
 
+    getAddress = ()=>{
+        let address = this.state.address + ", " + this.state.city + ", " + this.state.state + ", " + this.state.zip_code
+        
+        address = address.split(" ").join("+");
+        console.log(address);
+
+        return address;
+    }
+
+    handleSubmit = (e)=>{
+        e.preventDefault();
+
+        fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${this.getAddress()}&key=${process.env.REACT_APP_API_KEY}`)
+            .then( locationRes => {
+                if(!locationRes.ok){
+                    locationRes.json().then( e => Promise.reject(e));
+                };
+
+                return locationRes.json();
+            })
+            .then( locationData => {
+
+                console.log(locationData);
+
+                this.setState({ error: "Success"});
+
+                fetch(`http://localhost:8000/api/living-space`, {
+                    method: "POST",
+                    headers: {
+                        'content-type': "application/json",
+                        "authorization": `bearer ${TokenService.getToken()}`
+                    },
+                    body: JSON.stringify({
+                        address: this.state.address,
+                        city: this.state.city,
+                        state: this.state.state,
+                        zip_code: this.state.zip_code,
+                        space_type: this.state.space_type,
+                        room_amount: this.state.room_amount,
+                        bathroom_amount: this.state.bathroom_amount,
+                        pet: this.state.pets,
+                        price: this.state.price,
+                        lat: locationData.results[0].geometry.location.lat,
+                        lng: locationData.results[0].geometry.location.lng
+                    })
+                })
+
+            })
+            .catch( err => { console.log(err)})
+    }
+
     render(){
 
         return (
             <section>
-                <form>
+                <form onSubmit={this.handleSubmit}>
                     <fieldset>
 
-                        <label htlFor="post-ad-address">Address</label>
+                        <label htmlFor="post-ad-address">Address</label>
                         <input 
                             id="post-ad-address" 
                             type="text"
@@ -147,8 +199,7 @@ export default class PostAd extends React.Component{
                         <label htmlFor="register-ad-price">Price</label>
                         <input 
                             id="register-ad-price" 
-                            type="range" 
-                            defaultValue={1000} 
+                            type="range"  
                             min={0} 
                             max={10000}
                             value={this.state.price} 
@@ -158,6 +209,8 @@ export default class PostAd extends React.Component{
                         <input 
                             id="register-ad-images" 
                             type="file"></input>
+
+                        {this.state.error ? <p>{this.state.error}</p> : ""}
 
                         <button type="submit">Post Ad</button>
                     </fieldset>
