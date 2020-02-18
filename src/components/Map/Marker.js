@@ -1,7 +1,7 @@
 import React from "react";
-import "./Marker.css";
+import {Marker, InfoWindow} from "@react-google-maps/api";
 
-export default class Marker extends React.Component{
+export default class Customarker extends React.Component{
     constructor(props){
         super(props);
         this.state = {
@@ -14,26 +14,35 @@ export default class Marker extends React.Component{
 
     renderAdInfo = ()=>{
         return (
-            <section className="ad-info">
-
-                <p style={{}} onClick={()=>{this.setState({
-                    open: false
-                })}}>
-                    x
-                </p>
-                <p>
-                    {this.props.ad.address}
-                </p>
-                <p>
-                    display again
-                </p>
-            </section>
+            <InfoWindow 
+                className="ad-info"
+                position={this.props.position}
+                onCloseClick={()=>{this.setState({ open: false})}}
+                >
+                <section>
+                    <p style={{}} onClick={()=>{this.setState({
+                        open: false
+                    })}}>
+                        x
+                    </p>
+                    <p>
+                        {this.props.ad.address}
+                    </p>
+                    <p>
+                        display again
+                    </p>
+                </section>
+            </InfoWindow>
         );
     };
 
-    toggleAdInfo = (e)=>{
+    renderMarker = ()=>{
+        return (
+            <Marker onClick={this.toggleAdInfo} position={this.props.position}/>
+        );
+    }
 
-        console.log("toggled", e.target);
+    toggleAdInfo = (e)=>{
 
         this.setState({
             open: true
@@ -44,8 +53,9 @@ export default class Marker extends React.Component{
     render(){
         
         return (
-            <section onClick={this.toggleAdInfo} className="marker">
-                {this.state.open ? this.renderAdInfo() : ""}
+            <section className="marker">
+                
+                {this.state.open ? this.renderAdInfo() : this.renderMarker()}
             </section>
         )
     };

@@ -1,7 +1,6 @@
 import React from "react";
-import GoogleMap from "google-map-react";
-import {Route} from "react-router-dom";
-import Marker from "./Marker";
+import { GoogleMap, LoadScript, Marker} from "@react-google-maps/api";
+import CustomMarker from "./Marker";
 
 export default class Map extends React.Component{
     constructor(props){
@@ -57,8 +56,12 @@ export default class Map extends React.Component{
         let ads = this.props.ads;
 
         ads = ads.map( ( ad, index) => {
+            let position = {
+                lat: Number(ad.lat),
+                lng: Number(ad.lng)
+            }
             
-            return <Marker key={index} ad={ad} lat={ad.lat} lng={ad.lng}/>
+            return <CustomMarker key={index} ad={ad} position={position}/>
         });
 
         return ads;
@@ -67,33 +70,23 @@ export default class Map extends React.Component{
     render(){
         
         return (
-            
             <GoogleMap
+                id="map"
                 className="map"
-                bootstrapURLKeys={{
-                    key: process.env.REACT_APP_API_KEY,
-                    language: "en",
-                    region: "US"
-                }}
-                
-                onChange={this.change}
-                zoom={this.props.zoom}
-                center={this.props.center}
-                style={{
-                    flex: 1
-                }}
-                options={
-                    {
+                mapContainerStyle={{
+                    height: "100vh",
+                    width: "100%"
+                    }}
+                    zoom={this.props.zoom}
+                    center={this.props.center}
+                    options={{
                         fullscreenControl: false,
-                        mapTypeControl: false,
-                        mapTypeId: "hybrid"                    
-                    }
-                }
-                resetBoundsOnResize={false}
-            >
+                        mapTypeId: "hybrid",
+                        mapTypeControl: false
+                    }}
+                >
                 {this.renderAds()}
-                
-            </GoogleMap>            
+            </GoogleMap>     
         );
     };
 };
