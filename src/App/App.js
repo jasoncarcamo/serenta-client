@@ -97,8 +97,32 @@ class App extends React.Component {
 
     renderFilterButton = ()=>{
         if(this.state.searchSpaces){
-            return <Route exact path="/" component={FilterSpaces}></Route>
+            return <Route exact path="/" render={(props) => <FilterSpaces {...props} cancelFilter={this.cancelFilter} filterSpaces={this.filterSpaces}/>}></Route>
         }
+    }
+
+    filterSpaces = (filterInfo)=>{
+        const spaces = filterInfo;
+        let allAds = this.context.ads;
+        let filteredSpaces = allAds;
+        
+        for(const [spaceKey, spaceValue] of Object.entries(spaces)){
+            
+            filteredSpaces = filteredSpaces.filter( ( ad, index)=> {
+
+                return ad[spaceKey] === spaceValue ? ad : ""
+            });
+        }
+
+        this.setState({
+            ads: filteredSpaces
+        });
+
+        console.log(this.state.ads)
+    }
+
+    cancelFilter = ()=>{
+        this.componentDidMount();
     }
 
     searchArea = (lat, lng, zoom)=>{
@@ -126,7 +150,7 @@ class App extends React.Component {
                             showJobSearch={this.showJobSearch}>                            
                         </ToggleSearchBox>
                 }></Route>
-
+        
                 <Route exact path="/" render={(props)=> <Map {...props} ads={this.state.ads} lat={this.state.lat} lng={this.state.long} zoom={this.state.zoom} center={{
                     lat: this.state.lat,
                     lng: this.state.long

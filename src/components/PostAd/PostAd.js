@@ -12,8 +12,8 @@ export default class PostAd extends React.Component{
             state: "",
             zip_code: "",
             space_type: "Bedroom",
-            room_amount: 1,
-            bathroom_amount: 1,
+            room_amount: "1 room",
+            bathroom_amount: "1 bathroom",
             pets: "No pets",
             price: "",
             error: ""
@@ -181,10 +181,10 @@ export default class PostAd extends React.Component{
                             id="register-ad-rooms" 
                             value={this.state.room_amount} 
                             onChange={this.handleRoomAmount}>
-                            <option value={1}>1</option>
-                            <option value={2}>2</option>
-                            <option value={3}>3</option>
-                            <option value={3}>3</option>
+                            <option value="1 room">1</option>
+                            <option value="2 rooms">2</option>
+                            <option value="3 rooms">3</option>
+                            <option value="4 rooms">3</option>
                         </select>
 
                         <label htmlFor="register-ad-bathrooms">Number of bathrooms:</label>
@@ -192,10 +192,10 @@ export default class PostAd extends React.Component{
                             id="register-ad-bathrooms" 
                             value={this.state.bathroom_amount} 
                             onChange={this.handleBathroomAmount}>
-                            <option value={1}>1</option>
-                            <option value={2}>2</option>
-                            <option value={3}>3</option>
-                            <option value={4}>4</option>
+                            <option value="1 bathroom">1</option>
+                            <option value="2 bathrooms">2</option>
+                            <option value="3 bathrooms">3</option>
+                            <option value="4 bathrooms">4</option>
                         </select>
 
                         <label htmlFor="register-ad-pets">Pets:</label>

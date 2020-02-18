@@ -40,7 +40,7 @@ export default class Login extends React.Component{
                 return res.json();
             })
             .then( resData => {
-                console.log(resData);
+                
                 TokenService.saveToken(resData.token);
                 this.props.history.push("/user");
             })

@@ -1,11 +1,12 @@
 import React from "react";
 import { GoogleMap, LoadScript, Marker} from "@react-google-maps/api";
-import CustomMarker from "./Marker";
+import CustomMarker from "./CustomMarker";
 
 export default class Map extends React.Component{
     constructor(props){
         super(props);
         this.state = {
+            ads: [],
             lat: "",
             long: ""
         };
@@ -14,11 +15,16 @@ export default class Map extends React.Component{
 
     componentDidMount(){
         this.cick();
-        
+        this.setState({
+            ads: this.props.ads
+        })
     }
 
     componentWillReceiveProps(){
-        
+
+        this.setState({
+            ads: this.props.ads
+        })
     }
 
     success = (position)=>{
@@ -40,7 +46,7 @@ export default class Map extends React.Component{
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(this.success, this.Error);
         } else { 
-        console.log("Geolocation is not supported by this browser. ");
+            console.log("Geolocation is not supported by this browser. ");
         };
     }
 
@@ -56,6 +62,7 @@ export default class Map extends React.Component{
         let ads = this.props.ads;
 
         ads = ads.map( ( ad, index) => {
+            
             let position = {
                 lat: Number(ad.lat),
                 lng: Number(ad.lng)
@@ -74,8 +81,13 @@ export default class Map extends React.Component{
                 id="map"
                 className="map"
                 mapContainerStyle={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
                     height: "100vh",
-                    width: "100%"
+                    width: "100%",
+                    padding: 0,
+                    margin: 0,
                     }}
                     zoom={this.props.zoom}
                     center={this.props.center}
@@ -86,6 +98,7 @@ export default class Map extends React.Component{
                     }}
                 >
                 {this.renderAds()}
+                
             </GoogleMap>     
         );
     };

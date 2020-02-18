@@ -1,4 +1,4 @@
-.marker{
+/*.marker{
     margin: 0;
     padding: 0;
     position: absolute;
@@ -17,18 +17,16 @@
     background-color: blue;
     border: .2em solid red;
 }
+*/
 
 .ad-info{
-    position: absolute;
     margin: 0;
     padding: 0;
     height: auto;
     width: 50em;  
-    top: 1em;
-    left: .75em;
-    border: .1em solid black;
+    border: 10em solid black;
     z-index: 4 !important;
-    background-color: white;
+    background-color: orange;
 }
 
 @media screen and (max-width: 770px){

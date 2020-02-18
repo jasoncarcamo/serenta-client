@@ -1,13 +1,33 @@
 import React from "react";
 import {Marker, InfoWindow} from "@react-google-maps/api";
+import "./CustomMarker";
+
+const windowsInfoStyle = {
+    width: "35em",
+    backgroundColor: "orange"
+};
+
+const mobileInfoStyle = {
+    width: "30em",
+    backgroundColor: "orange"
+};
 
 export default class Customarker extends React.Component{
     constructor(props){
         super(props);
         this.state = {
+            screenWidth: window.innerWidth,
             open: false
         };
     };
+
+    componentDidMount(){
+        window.addEventListener("resize", (e)=>{
+            this.setState({
+                screenWidth: window.innerWidth
+            })
+        })
+    }
 
     componentWillReceiveProps(){
     }
@@ -15,22 +35,21 @@ export default class Customarker extends React.Component{
     renderAdInfo = ()=>{
         return (
             <InfoWindow 
-                className="ad-info"
                 position={this.props.position}
                 onCloseClick={()=>{this.setState({ open: false})}}
                 >
-                <section>
-                    <p style={{}} onClick={()=>{this.setState({
-                        open: false
-                    })}}>
-                        x
-                    </p>
-                    <p>
-                        {this.props.ad.address}
-                    </p>
-                    <p>
-                        display again
-                    </p>
+                <section 
+                    className="ad-info" 
+                    style={this.state.screenWidth > 770 ? windowsInfoStyle : mobileInfoStyle}>
+                        
+                        <p>
+                            {this.props.ad.address}
+                        </p>
+
+                        <p>
+                            display again
+                        </p>
+
                 </section>
             </InfoWindow>
         );
