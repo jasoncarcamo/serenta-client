@@ -231,6 +231,7 @@ export default class Map extends React.Component{
                 </MarkerClusterer>
 
                 <StreetViewPanorama 
+                  onUnmount={this.props.toggleSpaceSearch}
                   onVisibleChanged={this.props.toggleSpaceSearch}
                   options={{
                     fullscreenControl: false

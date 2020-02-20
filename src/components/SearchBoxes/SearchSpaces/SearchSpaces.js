@@ -51,13 +51,58 @@ export default class SearchSpaces extends React.Component{
     handleSelect = (address)=>{
         console.log(address)
         this.setState({ address });
+        this.autoSearch(address);
     };
+    
+    autoSearch = (selectedAddress)=>{
+        let commasAmount = 0;
+        let zoom = 13;
+        let address = selectedAddress.toLowerCase();
+
+        address = address.split(" ");
+
+        for( let i = 0; i < address.length; i++){
+            
+            if(address[i].substring( address[i].length - 1) === ","){
+
+                commasAmount++;
+
+            };
+
+        };
+
+        if(commasAmount == 0){
+            zoom = 4;
+        };
+
+        if(commasAmount == 1){
+            zoom = 8
+        };
+
+        if( commasAmount >= 2){
+            zoom = 14;
+        };
+
+        fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyAAPqYeOSuJKs63H8A4NwaKp8fjVZo_jao`)
+            .then( res => {
+                if(!res.ok){
+                    res.json().then( e => Promise.reject(e));
+                };
+
+                return res.json();
+            })
+            .then( resData => {
+
+                this.props.searchArea(resData.results[0].geometry.location.lat, resData.results[0].geometry.location.lng, zoom);
+
+            })
+            .catch( err => { console.log(err)})
+    }
 
     handleSearch = (e)=>{
-        if(e){
-            e.preventDefault();
-        };
-        console.log(this.state.address)
+
+        e.preventDefault();
+
         let commasAmount = 0;
         let zoom = 13;
         let address = this.state.address.toLowerCase();
