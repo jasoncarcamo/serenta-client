@@ -23,6 +23,7 @@
     border: none;
     background-color: white;
     border-radius: 1em;
+    border: .2em solid black;
 }
 
 .nav-link{
@@ -33,6 +34,10 @@
 }
 
 @media screen and (max-width: 770px){
+    #nav-header{
+        top: 5.5em;
+    }
+
     #nav-container button{
         margin: 0 1em 0 -.5em;
     }

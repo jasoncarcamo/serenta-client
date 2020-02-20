@@ -14,7 +14,7 @@ export default class SearchSpaces extends React.Component{
         this.state = {
             address: "",
             lat: "",
-            long: ""
+            lng: ""
         }
     };
 
@@ -23,11 +23,11 @@ export default class SearchSpaces extends React.Component{
 
     success = (position)=>{
         let lat = position.coords.latitude;
-        let long = position.coords.longitude;
+        let lng = position.coords.longitude;
         
         this.setState({
             lat,
-            long
+            lng
         });
     };
 
@@ -44,19 +44,20 @@ export default class SearchSpaces extends React.Component{
     }
 
     handleAddress = (address)=>{
-        
+        console.log(address);
         this.setState({ address })
     }
 
     handleSelect = (address)=>{
-        
+        console.log(address)
         this.setState({ address });
-
     };
 
     handleSearch = (e)=>{
-        e.preventDefault();
-        
+        if(e){
+            e.preventDefault();
+        };
+        console.log(this.state.address)
         let commasAmount = 0;
         let zoom = 13;
         let address = this.state.address.toLowerCase();
@@ -73,16 +74,16 @@ export default class SearchSpaces extends React.Component{
 
         };
 
-        if(commasAmount === 0){
+        if(commasAmount == 0){
             zoom = 4;
         };
 
-        if(commasAmount === 1){
-            zoom = 7
+        if(commasAmount == 1){
+            zoom = 8
         };
 
         if( commasAmount >= 2){
-            zoom = 13;
+            zoom = 14;
         };
 
         fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyAAPqYeOSuJKs63H8A4NwaKp8fjVZo_jao`)
@@ -122,6 +123,7 @@ export default class SearchSpaces extends React.Component{
                         placeholder: 'Search areas near you ...',
                         className: 'location-search-input',
                     })}
+                    required
                     />
 
                     <button type="submit"
@@ -137,8 +139,8 @@ export default class SearchSpaces extends React.Component{
                         : 'suggestion-item';
                         // inline style for demonstration purpose
                         const style = suggestion.active
-                        ? { backgroundColor: 'lightgray', cursor: 'pointer', margin: "1em 0", padding: "1em 1em"}
-                        : { backgroundColor: '#ffffff', cursor: 'pointer', margin: "1em 0", padding: "1em 1em"};
+                        ? { backgroundColor: 'lightgray', cursor: 'pointer', margin: "0", padding: ".9em 1em"}
+                        : { backgroundColor: '#ffffff', cursor: 'pointer', margin: "0", padding: ".9em 1em"};
 
                         return (
                         <div

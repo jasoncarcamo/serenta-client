@@ -21,7 +21,6 @@ export default class ToggleSearchBox extends React.Component{
         return (
             <section id="toggle-search-boxes">
                 <button  onClick={this.showSpacesSearch}>Living Spaces</button>
-                <button onClick={this.showJobSearch}>Jobs</button>
             </section>
         )
     }

@@ -57,7 +57,7 @@ export default class Customarker extends React.Component{
 
     renderMarker = ()=>{
         return (
-            <Marker onClick={this.toggleAdInfo} position={this.props.position}/>
+            <Marker onClick={this.toggleAdInfo} position={this.props.position} clusterer={this.props.clusterer}/>
         );
     }
 
@@ -70,7 +70,7 @@ export default class Customarker extends React.Component{
     }
 
     render(){
-        
+
         return (
             <section className="marker">
                 

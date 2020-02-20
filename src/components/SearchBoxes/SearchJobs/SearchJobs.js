@@ -23,11 +23,11 @@ export default class SearchJobs extends React.Component{
 
     success = (position)=>{
         let lat = position.coords.latitude;
-        let long = position.coords.longitude;
+        let lng = position.coords.longitude;
         
         this.setState({
             lat,
-            long
+            lng
         });
     };
 

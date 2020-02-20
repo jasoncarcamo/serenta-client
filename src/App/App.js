@@ -23,7 +23,7 @@ class App extends React.Component {
             searchSpaces: true,
             searchJobs: false,
             lat: 39.011902,
-            long: -98.4842465,
+            lng: -98.4842465,
             zoom: 4,
             enableGps: false
         }
@@ -32,6 +32,8 @@ class App extends React.Component {
     static contextType = SpacesContext;
 
     componentDidMount(){
+
+        console.log("App mounted");
 
         this.enableGps();
         
@@ -56,11 +58,11 @@ class App extends React.Component {
 
     success = (position)=>{
         let lat = position.coords.latitude;
-        let long = position.coords.longitude;
+        let lng = position.coords.longitude;
 
         this.setState({
             lat,
-            long,
+            lng,
             zoom: 13,
             enableGps: true
         });
@@ -74,18 +76,18 @@ class App extends React.Component {
     renderSearchInputs = ()=>{
         if(this.state.searchSpaces){
             return <Route exact path="/" render={(props)=> <SearchSpaces {...props} searchArea={this.searchArea}></SearchSpaces>}></Route>
-        };
-
-        if(this.state.searchJobs){
-            return <Route exact path="/" component={SearchJobs}></Route>
-        };
+        } else{
+            return "";
+        }
     }
 
     showSpacesSearch = () => {
-        this.setState({
-            searchSpaces: true,
-            searchJobs: false
-        });
+        if(!this.state.searchSpaces){
+            this.setState({
+                searchSpaces: true,
+                searchJobs: false
+            });
+        }
     };
 
     showJobSearch = ()=>{
@@ -94,6 +96,12 @@ class App extends React.Component {
             searchJobs: true
         });
     };
+
+    toggleSpaceSearch = ()=>{
+        this.setState({
+            searchSpaces: !this.state.searchSpaces
+        })
+    }
 
     renderFilterButton = ()=>{
         if(this.state.searchSpaces){
@@ -113,8 +121,11 @@ class App extends React.Component {
                 return ad[spaceKey] === spaceValue ? ad : ""
             });
         }
-
+        console.log(filteredSpaces[0], this.state.lat)
         this.setState({
+            zoom: 10,
+            lat: filteredSpaces[0] ? Number(filteredSpaces[0].lat) : this.state.lat,
+            lng: filteredSpaces[0] ? Number(filteredSpaces[0].lng) : this.state.lng,
             ads: filteredSpaces
         });
 
@@ -129,13 +140,13 @@ class App extends React.Component {
         
         this.setState({
             lat,
-            long: lng,
+            lng,
             zoom
         })
     }
 
     render(){
-        console.log(this.state.ads)
+
         return (
             <section id="routes-container">
         
@@ -146,15 +157,26 @@ class App extends React.Component {
                 <Route exact path="/" render={
                     (props) => <ToggleSearchBox 
                             {...props} 
-                            showSpacesSearch={this.showSpacesSearch} 
-                            showJobSearch={this.showJobSearch}>                            
+                            showSpacesSearch={this.showSpacesSearch}
+                            >                            
                         </ToggleSearchBox>
                 }></Route>
         
-                <Route exact path="/" render={(props)=> <Map {...props} ads={this.state.ads} lat={this.state.lat} lng={this.state.long} zoom={this.state.zoom} center={{
-                    lat: this.state.lat,
-                    lng: this.state.long
-                }}></Map>}></Route>
+                <Route 
+                    exact path="/" 
+                    render={(props) => 
+                        <Map {...props} 
+                            ads={this.state.ads} 
+                            lat={this.state.lat} 
+                            lng={this.state.lng} 
+                            zoom={this.state.zoom} 
+                            center={{
+                                lat: this.state.lat,
+                                lng: this.state.lng
+                            }}
+                            toggleSpaceSearch={this.toggleSpaceSearch}
+                            ></Map>}>
+                </Route>
 
                 {this.renderFilterButton()}
         

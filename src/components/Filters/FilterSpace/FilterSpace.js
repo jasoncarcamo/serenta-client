@@ -6,8 +6,6 @@ export default class FilterSpaces extends React.Component{
         super(props);
         this.state = {
             filterSpaces: false,
-            radioroom_amount: "1 room",
-            radiobathroom_amount: "1 bathroom",
             space_type: "Bedroom",
             room_amount: "1 room",
             bathroom_amount: "1 bathroom",
@@ -24,7 +22,6 @@ export default class FilterSpaces extends React.Component{
 
     handleInput = (e)=>{
 
-        console.log(e.target.name, e.target.value, e.target.checked);
 
         this.setState({
             [e.target.name]: e.target.value.toString()
@@ -42,13 +39,9 @@ export default class FilterSpaces extends React.Component{
     }
 
     confirmFilter = ()=>{
-        let prevState = this.state
         let filterSpaces = this.state;
 
         delete filterSpaces["filterSpaces"];
-        delete filterSpaces["radioroom_amount"];
-        delete filterSpaces["radiobathroom_amount"];
-        delete filterSpaces["radiopets"];
         
         this.props.filterSpaces(filterSpaces);
     }

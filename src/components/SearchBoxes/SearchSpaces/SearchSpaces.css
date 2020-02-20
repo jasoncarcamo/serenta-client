@@ -1,41 +1,36 @@
 #search-location{
     display: flex;
-    justify-content: center;
-    width: 40em;
-    padding: 0;
-    margin: 0 0 0 -20em;
     position: absolute;
-    z-index: 2;  
-    top: 5em;
     left: 50%;
-}
-
-#search-location input{
-    border: none;
+    transform: translate(-50%);
+    z-index: 2;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
 }
 
 #search-location input{
     display: block;
-    position: relative;
-    width: 40em;
-    height: 3em;
+    position: absolute;  
+    top: 2em;  
+    width: 35em;
+    height: 2.5em;
     font-size: 1em;
-    padding: 0 0 0 3em;
+    padding: 0 0 0 2.5em;
     z-index: 2;
-    margin: 0 auto !important;
+    margin: 0;
     border-radius: 3em;
     border: .1em solid lightgray;
-    color: black;
     outline: none;
 }
 
 #search-location button{
-    width: 3.5em;
-    height: 3.5em;
+    width: 3em;
+    height: 3em;
     position: absolute;
     z-index: 3;
-    top: .2em;
-    right: .2em;
+    top: 3em;
+    right: .4em;
     padding: 0;
     margin: 0 0 0 -1em;
     border-radius: 100%;
@@ -44,43 +39,51 @@
 
 .autocomplete-dropdown-container{
     position: relative;
-    width: 37em;
-    top: -2em;
-    left: 1.75em;
-    z-index: 1;
+    width: 35em;
+    top: 4.4em;
+    left: 0;
     background-color: white;
-    border: .2em solid black;
 }
 
 .suggestion-item{
+    position: relative;
+    z-index: 4 !important;
     width: 100%;
     padding: 0 1em;
     margin: 0 0 0 2em;
+    border: .1em solid lightgrey;
 }
 
 @media screen and (max-width: 770px){
     #search-location{
         width: 100vw;
+        height: 5em;
         margin: 0;
         left: 0;
+        transform: translate(0);
+        background-color: white;
     }
 
     #search-location input{
         display: block;
         position: absolute;
-        width: 100%;
-        left: 0;
+        width: 85%;
+        top: 1.3em;
+        transform: translate(-50%);
+        left: 50%;
     }  
     
     #search-location button{
-        top: 0;
+        top: 1.5em;
+        right: 4.2em;
     }
 
     .autocomplete-dropdown-container{
         position: relative;
-        width: 95%;
-        top: 2em;
-        left: .5em;
+        width: 100vw;
+        top: 4.5em;
+        left: 0;
+        transform: translate(0);
     }
     
 }
