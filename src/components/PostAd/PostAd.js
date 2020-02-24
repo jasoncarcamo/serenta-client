@@ -16,6 +16,7 @@ export default class PostAd extends React.Component{
             bathroom_amount: "1 bathroom",
             pets: "No pets",
             price: "",
+            mobile_number: "",
             error: ""
         };
     };
@@ -62,6 +63,12 @@ export default class PostAd extends React.Component{
         this.setState({ price: e.target.value});
     }
 
+    handleMobileNumber = (e)=>{
+        this.setState({
+            mobile_number: e.target.value
+        })
+    }
+
     getAddress = ()=>{
         let address = this.state.address + ", " + this.state.city + ", " + this.state.state + ", " + this.state.zip_code
         
@@ -99,6 +106,7 @@ export default class PostAd extends React.Component{
                         bathroom_amount: this.state.bathroom_amount,
                         pets: this.state.pets,
                         price: this.state.price,
+                        mobile_number: this.getSnapshotBeforeUpdate.mobile_number,
                         lat: locationData.results[0].geometry.location.lat,
                         lng: locationData.results[0].geometry.location.lng
                     })
@@ -215,6 +223,14 @@ export default class PostAd extends React.Component{
                             type="text"
                             value={this.state.price} 
                             onChange={this.handlePrice}></input>
+
+                        <label htmlFor="register-ad-mobile-number">Confirm mobile number:</label>
+                        <input 
+                            id="register-ad-mobile-number"
+                            type="text"
+                            value={this.state.mobile_number}
+                            onChange={this.handleMobileNumber}
+                            />
 
                         <label htmlFor="register-ad-images">Images</label>
                         <input 

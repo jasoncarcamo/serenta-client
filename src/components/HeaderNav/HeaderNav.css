@@ -2,7 +2,7 @@
     position: absolute;
     margin: 0;
     padding: 0;
-    z-index: 2;
+    z-index: 4;
     top: 1.25em;
     right: 0;
 }
@@ -33,12 +33,46 @@
     text-shadow: .1em .1em .05em black;
 }
 
+#close-menu{
+    display: none
+}
+
 @media screen and (max-width: 770px){
     #nav-header{
-        top: 5.5em;
+        display: none;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        z-index: 4;
+        background-color: white;
+    }
+
+    .display-header{
+        display: block !important;
+    }
+
+    #nav-container{
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+
+    #nav-container div{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
     }
 
     #nav-container button{
-        margin: 0 1em 0 -.5em;
+        margin: 1em 1em 1em -.5em;
+    }
+
+    #close-menu{
+        display: block;
+        position: relative;
+        width: 2em;
+        text-align: center;
+        border: 1px solid black;
+        margin-left: auto;
+        margin-right: 1em;
     }
 }

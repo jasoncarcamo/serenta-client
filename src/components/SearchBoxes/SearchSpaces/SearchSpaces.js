@@ -1,5 +1,6 @@
 import React from "react";
 import "./SearchSpaces.css";
+import "./hamburger.css";
 import PlacesAutoComplete, {
     geocodeByAddress,
     getLatLng
@@ -19,6 +20,9 @@ export default class SearchSpaces extends React.Component{
     };
 
     componentDidMount(){
+        document.getElementById("nav-burger").addEventListener("click", (e)=>{
+            document.getElementById("nav-header").classList.toggle("display-header")
+        })
     }
 
     success = (position)=>{
@@ -44,12 +48,10 @@ export default class SearchSpaces extends React.Component{
     }
 
     handleAddress = (address)=>{
-        console.log(address);
         this.setState({ address })
     }
 
     handleSelect = (address)=>{
-        console.log(address)
         this.setState({ address });
         this.autoSearch(address);
     };
@@ -162,8 +164,14 @@ export default class SearchSpaces extends React.Component{
                     
                     {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
                 <div>
+
+                    <button id="nav-burger"className="hamburger hamburger--collapse" type="button">
+                        <span className="hamburger-box" >
+                            <span className="hamburger-inner"></span>
+                        </span>
+                    </button>
+
                     <input
-                    value={this.state.address}
                     {...getInputProps({
                         placeholder: 'Search areas near you ...',
                         className: 'location-search-input',
@@ -171,7 +179,7 @@ export default class SearchSpaces extends React.Component{
                     required
                     />
 
-                    <button type="submit"
+                    <button id="search-spaces-input" type="submit"
                     >Find spaces</button>
 
                     <div className="autocomplete-dropdown-container">

@@ -8,7 +8,7 @@ const windowsInfoStyle = {
 };
 
 const mobileInfoStyle = {
-    width: "30em",
+    width: "100%",
     backgroundColor: "orange"
 };
 
@@ -29,7 +29,8 @@ export default class Customarker extends React.Component{
         })
     }
 
-    componentWillReceiveProps(){
+    componentDidUpdate(){
+        
     }
 
     renderAdInfo = ()=>{
@@ -41,13 +42,34 @@ export default class Customarker extends React.Component{
                 <section 
                     className="ad-info" 
                     style={this.state.screenWidth > 770 ? windowsInfoStyle : mobileInfoStyle}>
+
+                        <p>
+                            <strong>{this.props.ad.space_type}</strong>
+                        </p>
                         
                         <p>
-                            {this.props.ad.address}
+                            <strong>address: </strong>
+                            {this.props.ad.address + " " + this.props.ad.city + " " + this.props.ad.state + " " + this.props.ad.zip_code}
                         </p>
 
                         <p>
-                            display again
+                            <strong>Rooms: </strong>{this.props.ad.room_amount}
+                        </p>
+
+                        <p>
+                            <strong>Bathrooms: </strong>{this.props.ad.bathroom_amount}
+                        </p>
+
+                        <p>
+                            {this.props.ad.pets}
+                        </p>
+
+                        <p>
+                            <strong>Price: </strong>{this.props.ad.price}
+                        </p>
+
+                        <p>
+                            <strong>Call lister</strong>
                         </p>
 
                 </section>
@@ -70,7 +92,7 @@ export default class Customarker extends React.Component{
     }
 
     render(){
-
+        console.log(this.props)
         return (
             <section className="marker">
                 

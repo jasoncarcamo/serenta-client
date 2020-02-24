@@ -12,19 +12,30 @@
 #search-location input{
     display: block;
     position: absolute;  
-    top: 2em;  
-    width: 35em;
-    height: 2.5em;
+    top: 4.5em;  
+    width: 40em;
+    height: 3em;
     font-size: 1em;
     padding: 0 0 0 2.5em;
     z-index: 2;
     margin: 0;
-    border-radius: 3em;
+    border-radius: .5em;
     border: .1em solid lightgray;
     outline: none;
 }
 
-#search-location button{
+#nav-burger{
+    position: absolute;
+    z-index: 3;
+    top: 5.4em;
+    left: 1.5em;
+    padding: 0;
+    margin: 0 0 0 -1em;
+    border-radius: 100%;
+    border: none;
+}
+
+#search-spaces-input{
     width: 3em;
     height: 3em;
     position: absolute;
@@ -57,7 +68,7 @@
 @media screen and (max-width: 770px){
     #search-location{
         width: 100vw;
-        height: 5em;
+        height: 4.5em;
         margin: 0;
         left: 0;
         transform: translate(0);
@@ -67,13 +78,18 @@
     #search-location input{
         display: block;
         position: absolute;
-        width: 85%;
-        top: 1.3em;
+        width: 95%;
+        top: .79em;
         transform: translate(-50%);
         left: 50%;
     }  
+
+    #nav-burger{
+        top: 1.6em;
+        left: 2em;
+    }
     
-    #search-location button{
+    #search-spaces-input{
         top: 1.5em;
         right: 4.2em;
     }

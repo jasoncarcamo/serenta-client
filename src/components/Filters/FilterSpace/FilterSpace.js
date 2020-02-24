@@ -140,7 +140,7 @@ export default class FilterSpaces extends React.Component{
     }
 
     render(){
-        console.log(this.state)
+        
         return (
             <>  
                 

@@ -18,7 +18,6 @@ export class SpacesProvider extends React.Component{
     };
 
     componentDidMount(){
-
         fetch(`http://localhost:8000/api/living-space`, {
             headers: {
                 'content-type': "application/json",
@@ -33,7 +32,7 @@ export class SpacesProvider extends React.Component{
                 return adsRes.json();
             })
             .then( adsData => {
-
+                
                 this.setState({ 
                     ads: adsData.ads,
                     loading: false
@@ -61,10 +60,10 @@ export class SpacesProvider extends React.Component{
             ads: this.state.ads,
             refresh: this.refresh
         };
-
+        
         return (
             <SpacesContext.Provider value={value}>
-                {this.state.loading ? "" : this.props.children}
+                {this.state.loading ? <p>Loading screen</p> : this.props.children}
             </SpacesContext.Provider>
         );
     };

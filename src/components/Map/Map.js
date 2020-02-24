@@ -191,6 +191,14 @@ export default class Map extends React.Component{
           return features
     }
 
+    toggleSearchFocus = ()=>{
+      const input = document.getElementsByClassName("location-search-input");
+      if(!input[0]){
+          return;
+      }
+      input[0].blur()
+    }
+
     render(){
         const options = {
             imagePath:"https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m" 
@@ -209,14 +217,17 @@ export default class Map extends React.Component{
                     padding: 0,
                     margin: 0,
                     }}
-                    zoom={this.props.zoom}
-                    center={this.props.center}
-                    options={{
-                        fullscreenControl: false,
-                        mapTypeId: "hybrid",
-                        mapTypeControl: false
-                        
-                    }}  
+                zoom={this.props.zoom}
+                onClick={this.toggleSearchFocus}
+                onZoomChanged={this.toggleSearchFocus}
+                onDragEnd={this.toggleSearchFocus}
+                center={this.props.center}
+                options={{
+                    fullscreenControl: false,
+                    mapTypeId: "hybrid",
+                    mapTypeControl: false
+                    
+                }}  
                 >
                 <Marker icon="https://maps.google.com/mapfiles/kml/paddle/blu-stars.png" style={{width: "1.5em"}} position={this.props.center}/>
                 
@@ -231,10 +242,10 @@ export default class Map extends React.Component{
                 </MarkerClusterer>
 
                 <StreetViewPanorama 
-                  onUnmount={this.props.toggleSpaceSearch}
-                  onVisibleChanged={this.props.toggleSpaceSearch}
-                  options={{
-                    fullscreenControl: false
+                    onCloseclick={this.props.toggleSpaceSearch}
+                    onVisibleChanged={this.props.toggleSpaceSearch}
+                    options={{
+                        fullscreenControl: false
                   }}
                   ></StreetViewPanorama>
                 

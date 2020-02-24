@@ -33,8 +33,6 @@ class App extends React.Component {
 
     componentDidMount(){
 
-        console.log("App mounted");
-
         this.enableGps();
         
         this.setState({
@@ -100,7 +98,7 @@ class App extends React.Component {
     toggleSpaceSearch = ()=>{
         this.setState({
             searchSpaces: !this.state.searchSpaces
-        })
+        });
     }
 
     renderFilterButton = ()=>{
@@ -120,16 +118,14 @@ class App extends React.Component {
 
                 return ad[spaceKey] === spaceValue ? ad : ""
             });
-        }
-        console.log(filteredSpaces[0], this.state.lat)
+        };
+
         this.setState({
             zoom: 10,
             lat: filteredSpaces[0] ? Number(filteredSpaces[0].lat) : this.state.lat,
             lng: filteredSpaces[0] ? Number(filteredSpaces[0].lng) : this.state.lng,
             ads: filteredSpaces
         });
-
-        console.log(this.state.ads)
     }
 
     cancelFilter = ()=>{
@@ -153,14 +149,6 @@ class App extends React.Component {
                 <Route exact path="/" component={HeaderNav}></Route>
 
                 {this.renderSearchInputs()}
-
-                <Route exact path="/" render={
-                    (props) => <ToggleSearchBox 
-                            {...props} 
-                            showSpacesSearch={this.showSpacesSearch}
-                            >                            
-                        </ToggleSearchBox>
-                }></Route>
         
                 <Route 
                     exact path="/" 

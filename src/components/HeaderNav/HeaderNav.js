@@ -11,6 +11,12 @@ export default class HeaderNav extends React.Component{
         };
     };
 
+    componentDidMount(){
+        document.getElementById("close-menu").addEventListener("click", (e)=>{
+            document.getElementById("nav-header").classList.toggle("display-header");
+        })
+    }
+
     toLogin = ()=>{
         this.props.history.push("/login")
     }
@@ -21,10 +27,10 @@ export default class HeaderNav extends React.Component{
 
     notSignedIn = ()=>{
         return (
-            <nav id="nav-container">
+            <div>
                 <button onClick={this.toLogin}>Log In</button>
                 <button onClick={this.toAdRegister}>Post Ad</button>
-            </nav> 
+            </div> 
         );
     };
 
@@ -38,17 +44,23 @@ export default class HeaderNav extends React.Component{
 
     signedIn = ()=>{
         return (
-            <nav id="nav-container">
+            <div>
                 <button onClick={this.toAccount}>Account</button>
                 <button onClick={this.toPostAd}>Post Ad</button>
-            </nav>
+            </div>
         )
     }
 
     render(){
         return (
             <header id="nav-header">
-                {TokenService.hasToken() ? this.signedIn() : this.notSignedIn()}
+                <nav id="nav-container">
+                    
+                    <p id="close-menu">X</p>
+
+                    {TokenService.hasToken() ? this.signedIn() : this.notSignedIn()}
+
+                </nav>
             </header>
         );
     };
