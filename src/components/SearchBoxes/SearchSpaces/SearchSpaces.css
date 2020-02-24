@@ -25,14 +25,9 @@
 }
 
 #nav-burger{
+    display: none;
     position: absolute;
-    z-index: 3;
-    top: 5.4em;
-    left: 1.5em;
-    padding: 0;
-    margin: 0 0 0 -1em;
-    border-radius: 100%;
-    border: none;
+    
 }
 
 #search-spaces-input{
@@ -85,8 +80,14 @@
     }  
 
     #nav-burger{
+        display: block;
         top: 1.6em;
         left: 2em;
+        z-index: 3;
+        padding: 0;
+        margin: 0 0 0 -1em;
+        border-radius: 100%;
+        border: none;
     }
     
     #search-spaces-input{
