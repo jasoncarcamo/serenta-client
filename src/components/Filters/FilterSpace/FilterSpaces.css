@@ -1,11 +1,52 @@
 #filter-spaces-section{
+    display: flex;
+    flex-direction: column;
     position: absolute;
-    z-index: 3;
-    height: 15em;
-    left: 50%;
-    top: 15em;
+    z-index: 4;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    bottom: 0;
     font-size: 1em;
     background-color: white;
+    transform: translateY(0);
+    animation: display-filter .4s ease-in;
+}
+
+#filter-spaces-cancel-filter{
+    display: block;
+    width: 6.5em;
+    height: 3em;
+    margin: 3em 1em 1em auto;
+    background-color: red;
+    color: white;
+    border: none; 
+    border-radius: .5em;
+}
+
+#filter-spaces-fieldset{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+#filter-spaces-fieldset label, #filter-spaces-fieldset select, #filter-spaces-fieldset p{
+    display: block;
+    width: 50%;
+    margin: 0 auto;
+}
+
+#filter-spaces-fieldset p{
+    margin-top: 1em;
+    margin-bottom: 0;
+}
+
+#filter-spaces-fieldset label{
+    margin-top: .1em;
 }
 
 #filter-spaces-btn{
@@ -18,12 +59,41 @@
     font-size: 1em;
 }
 
+#confirm-filter-btns{
+    display: flex;
+    justify-content: space-evenly;
+    margin: 3.5em auto;
+}
+
+#confirm-filter-btns button{
+    width: 5em;
+    height: 3em;
+    margin: 0 2em;
+}
+
 @media screen and (max-width: 770px){
     #filter-spaces-section{
         width: 100%;
-        height: 100vh;
+        min-height: 100vh;
         top: 0;
         left: 0;
+        overflow: auto;
+    }
 
+    #filter-spaces-cancel-filter{
+        display: block;
+        width: 6em;
+        height: 3em;
+        margin: 2em 1em 2em auto;
+    }
+}
+
+@keyframes display-filter{
+    from{
+        transform: translateY(100%);
+    }
+
+    to{
+        transform: translateY(0)
     }
 }

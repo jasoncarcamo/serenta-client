@@ -106,7 +106,7 @@ export default class PostAd extends React.Component{
                         bathroom_amount: this.state.bathroom_amount,
                         pets: this.state.pets,
                         price: this.state.price,
-                        mobile_number: this.getSnapshotBeforeUpdate.mobile_number,
+                        mobile_number: this.state.mobile_number,
                         lat: locationData.results[0].geometry.location.lat,
                         lng: locationData.results[0].geometry.location.lng
                     })
@@ -220,9 +220,10 @@ export default class PostAd extends React.Component{
                         <label htmlFor="register-ad-price">Price</label>
                         <input 
                             id="register-ad-price" 
-                            type="text"
+                            type="number"
                             value={this.state.price} 
-                            onChange={this.handlePrice}></input>
+                            onChange={this.handlePrice}
+                            placeholder="How much monthly?"></input>
 
                         <label htmlFor="register-ad-mobile-number">Confirm mobile number:</label>
                         <input 

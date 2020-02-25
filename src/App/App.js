@@ -115,8 +115,14 @@ class App extends React.Component {
         for(const [spaceKey, spaceValue] of Object.entries(spaces)){
             
             filteredSpaces = filteredSpaces.filter( ( ad, index)=> {
+                console.log( ad[spaceKey], spaceValue)
 
-                return ad[spaceKey] === spaceValue ? ad : ""
+                if(ad.price && spaceKey === "price"){
+                    console.log(spaceKey)
+                    return Number(ad[spaceKey]) <= Number(spaceValue) ? ad : "";
+                }
+
+                return ad[spaceKey] === spaceValue ? ad : "";
             });
         };
 

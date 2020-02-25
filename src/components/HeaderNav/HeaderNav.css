@@ -26,6 +26,10 @@
     border: .2em solid black;
 }
 
+#log-out-button1{
+    display: none;
+}
+
 .nav-link{
     font-size: 1em;
     color: white;
@@ -68,7 +72,16 @@
     }
 
     #nav-container button{
-        margin: 1em 1em 1em -.5em;
+        margin: 1em;
+    }
+
+    #log-out-button1{
+        display: block;
+        align-self: flex-end !important;
+    }
+
+    #log-out-button2{
+        display: none;
     }
 
     #close-menu{
@@ -76,7 +89,6 @@
         position: relative;
         width: 2em;
         text-align: center;
-        border: 1px solid black;
         margin-left: auto;
         margin-right: 1em;
     }

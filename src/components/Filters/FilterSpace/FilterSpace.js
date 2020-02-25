@@ -49,7 +49,12 @@ export default class FilterSpaces extends React.Component{
     cancelFilter = () => {
         this.props.cancelFilter();
         this.setState({
-            filterSpaces: false
+            filterSpaces: false,
+            space_type: "Bedroom",
+            room_amount: "1 room",
+            bathroom_amount: "1 bathroom",
+            pets: "No pets",
+            price: ""
         })
     }
 
@@ -57,9 +62,10 @@ export default class FilterSpaces extends React.Component{
 
         return (
             <section id="filter-spaces-section">
-                <button onClick={this.cancelFilter}>Cancel filter</button>
-                    <form>
-                        <fieldset>
+
+                    <form id="filter-spaces-form">
+                        <fieldset id="filter-spaces-fieldset">
+                            <button id="filter-spaces-cancel-filter" onClick={this.cancelFilter}>Cancel filter</button>
 
                             <label htmlFor="register-ad-type">Living space type:</label>
                             <select 
@@ -91,7 +97,7 @@ export default class FilterSpaces extends React.Component{
                             <p>Number of bathrooms:</p>
 
                                 <label>
-                                    <input type="radio" name="bathroom_amount" value="1 bathroom" onChange={this.handleInput}  checked={this.state.bathroom_amount === "1 bathroom"}></input> 1
+                                    <input type="radio" name="bathroom_amount" value="1 bathroom" onChange={this.handleInput}  checked={this.state.bathroom_amount === "1 bathroom"}></input>1
                                 </label>
                                 
                                 <label>
@@ -112,23 +118,28 @@ export default class FilterSpaces extends React.Component{
                             </label>
 
                             <label>
-                                <input type="radio" name="pets" value="Dogs ok" onChange={this.handleInput} checked={this.state.pets === "Dogs ok"}></input> Dogs
+                                <input type="radio" name="pets" value="Dogs ok" onChange={this.handleInput} checked={this.state.pets === "Dogs ok"}></input> Dogs allowed
                             </label>
                             
                             <label>
-                                <input type="radio" name="pets" value="Cats ok" onChange={this.handleInput} checked={this.state.pets === "Cats ok"}></input>Cats
+                                <input type="radio" name="pets" value="Cats ok" onChange={this.handleInput} checked={this.state.pets === "Cats ok"}></input> Cats allowed
                             </label>
                             
                             <label>
-                                <input type="radio" name="pets" value="Dogs and Cats ok" onChange={this.handleInput} checked={this.state.pets === "Dogs and Cats ok"}></input>Dogs and Cats
+                                <input type="radio" name="pets" value="Dogs and Cats ok" onChange={this.handleInput} checked={this.state.pets === "Dogs and Cats ok"}></input> Dogs and Cats allowed
                             </label>
 
-                            <label htmlFor="register-ad-price">Price:</label>
-                            <input 
+                            <p>Rent under:</p>
+                            <label htmlFor="register-ad-price">
+                                <input 
                                 id="register-ad-price" 
                                 type="text"
                                 name="price"
+                                placeholder="E.g. 1500"
+                                value={this.state.price}
                                 onChange={this.handleInput}></input>
+                            </label>
+                            
 
                             {this.state.error ? <p>{this.state.error}</p> : ""}
                         </fieldset>

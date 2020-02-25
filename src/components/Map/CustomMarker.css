@@ -26,7 +26,6 @@
     width: 50em;  
     border: 10em solid black;
     z-index: 4 !important;
-    background-color: orange;
 }
 
 @media screen and (max-width: 770px){

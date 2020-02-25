@@ -31,16 +31,19 @@
 }
 
 #search-spaces-input{
-    width: 3em;
-    height: 3em;
+    width: 0;
+    height: 0;
     position: absolute;
+    font-size: 1.7em;
     z-index: 3;
     top: 3em;
-    right: .4em;
+    right: -1.25em;
     padding: 0;
     margin: 0 0 0 -1em;
     border-radius: 100%;
     border: none;
+    background-color: white;
+    cursor: pointer;
 }
 
 .autocomplete-dropdown-container{
@@ -79,6 +82,11 @@
         transform: translate(-50%);
         left: 50%;
     }  
+
+    #search-spaces-input{
+        top: .8em !important;
+        right: 2em !important;
+    }
 
     #nav-burger{
         display: block;

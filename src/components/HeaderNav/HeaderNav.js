@@ -52,15 +52,20 @@ export default class HeaderNav extends React.Component{
         )
     }
 
+    handleSignOut = ()=>{
+        TokenService.deleteToken();
+        this.props.history.push("/");
+    }
+
     render(){
         return (
             <header id="nav-header">
                 <nav id="nav-container">
                     
                     <p id="close-menu">X</p>
-
+                    {TokenService.hasToken() ? <button id="log-out-button2" onClick={this.handleSignOut}>Log out</button> : ""}
                     {TokenService.hasToken() ? this.signedIn() : this.notSignedIn()}
-
+                    {TokenService.hasToken() ? <button id="log-out-button2" onClick={this.handleSignOut}>Log out</button> : ""}
                 </nav>
             </header>
         );

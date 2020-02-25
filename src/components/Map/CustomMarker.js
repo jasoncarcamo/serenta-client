@@ -4,12 +4,10 @@ import "./CustomMarker";
 
 const windowsInfoStyle = {
     width: "35em",
-    backgroundColor: "orange"
 };
 
 const mobileInfoStyle = {
     width: "100%",
-    backgroundColor: "orange"
 };
 
 export default class Customarker extends React.Component{
@@ -33,7 +31,12 @@ export default class Customarker extends React.Component{
         
     }
 
+    getAddress = ()=>{
+        return this.props.ad.address + " " + this.props.ad.city + " " + this.props.ad.state + " " + this.props.ad.zip_code;
+    }
+
     renderAdInfo = ()=>{
+        console.log(this.props.ad)
         return (
             <InfoWindow 
                 position={this.props.position}
@@ -43,13 +46,13 @@ export default class Customarker extends React.Component{
                     className="ad-info" 
                     style={this.state.screenWidth > 770 ? windowsInfoStyle : mobileInfoStyle}>
 
-                        <p>
+                        <h2>
                             <strong>{this.props.ad.space_type}</strong>
-                        </p>
+                        </h2>
                         
                         <p>
-                            <strong>address: </strong>
-                            {this.props.ad.address + " " + this.props.ad.city + " " + this.props.ad.state + " " + this.props.ad.zip_code}
+                            <strong>Address: </strong>
+                            {this.getAddress()}
                         </p>
 
                         <p>
@@ -61,15 +64,25 @@ export default class Customarker extends React.Component{
                         </p>
 
                         <p>
-                            {this.props.ad.pets}
+                            <strong>{this.props.ad.pets}</strong>
                         </p>
 
                         <p>
-                            <strong>Price: </strong>{this.props.ad.price}
+                            <strong>Price: </strong>${this.props.ad.price} / monthly
                         </p>
 
                         <p>
-                            <strong>Call lister</strong>
+                            <strong><a href={`tel:${this.props.ad.mobile_number}`}>Call now: {this.props.ad.mobile_number}</a></strong>
+                        </p>
+
+                        <p>
+                            <strong>Includes: </strong>
+                            {this.props.ad.includes}
+                        </p>
+
+                        <p>
+                            <strong>Comments from lister: </strong>
+                            {this.props.ad.special_comments}
                         </p>
 
                 </section>

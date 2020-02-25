@@ -181,8 +181,10 @@ export default class SearchSpaces extends React.Component{
                     required
                     />
 
-
-                    <FontAwesomeIcon id="search-spaces-input" icon={faSearch}/>
+                    <button id="search-spaces-input" type="submit"
+                    >
+                        <FontAwesomeIcon icon={faSearch}/>
+                    </button>
 
                     <div className="autocomplete-dropdown-container">
 
