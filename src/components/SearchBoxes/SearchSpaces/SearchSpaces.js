@@ -5,6 +5,8 @@ import PlacesAutoComplete, {
     getLatLng
 } from "react-places-autocomplete";
 import dotenv from "dotenv";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faSearch} from "@fortawesome/free-solid-svg-icons";
 
 dotenv.config();
 
@@ -42,13 +44,13 @@ export default class SearchSpaces extends React.Component{
     cick = (e)=>{
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(this.success, this.Error);
-          } else { 
-            console.log("Geolocation is not supported by this browser.");
-          }
+        } else { 
+        console.log("Geolocation is not supported by this browser.");
+        };
     }
 
     handleAddress = (address)=>{
-        this.setState({ address })
+        this.setState({ address });
     }
 
     handleSelect = (address)=>{
@@ -179,8 +181,8 @@ export default class SearchSpaces extends React.Component{
                     required
                     />
 
-                    <button id="search-spaces-input" type="submit"
-                    >Find spaces</button>
+
+                    <FontAwesomeIcon id="search-spaces-input" icon={faSearch}/>
 
                     <div className="autocomplete-dropdown-container">
 
