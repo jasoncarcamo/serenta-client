@@ -13,7 +13,8 @@ export default class HeaderNav extends React.Component{
 
     componentDidMount(){
         document.getElementById("close-menu").addEventListener("click", (e)=>{
-            document.getElementById("nav-header").classList.toggle("display-header");
+            document.getElementById("nav-header").classList.remove("display-header");
+            document.getElementById("nav-header").classList.add("close-header")
         })
     }
 

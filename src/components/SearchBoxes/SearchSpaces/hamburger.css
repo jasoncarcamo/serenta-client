@@ -26,11 +26,11 @@
     .hamburger.is-active .hamburger-inner,
     .hamburger.is-active .hamburger-inner::before,
     .hamburger.is-active .hamburger-inner::after {
-      background-color: navy; }
+      background-color: #79589f; }
   
   .hamburger-box {
-    width: 40px;
-    height: 24px;
+    width: 1.5em;
+    height: 1.3em;
     display: inline-block;
     position: relative; }
   
@@ -39,9 +39,9 @@
     top: 50%;
     margin-top: -.2em; }
     .hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
-      width: 2em;
-      height: .3em;
-      background-color: navy;
+      width: 1.4em;
+      height: .25em;
+      background-color: #79589f;
       border-radius: .25em;
       position: absolute;
       transition-property: transform;
@@ -51,7 +51,7 @@
       content: "";
       display: block; }
     .hamburger-inner::before {
-      top: -.55em; }
+      top: -.65em; }
     .hamburger-inner::after {
       bottom: -.70em; }
   

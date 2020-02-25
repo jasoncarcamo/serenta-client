@@ -14,7 +14,7 @@ export default class Map extends React.Component{
 
 
     componentDidMount(){
-        this.cick();
+        this.getUserLocation();
         this.setState({
             ads: this.props.ads
         })
@@ -43,7 +43,7 @@ export default class Map extends React.Component{
         console.log("Error")
     }
 
-    cick = ()=>{
+    getUserLocation = ()=>{
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(this.success, this.Error);
         } else { 

@@ -1,6 +1,5 @@
 import React from "react";
 import "./SearchSpaces.css";
-import "./hamburger.css";
 import PlacesAutoComplete, {
     geocodeByAddress,
     getLatLng
@@ -21,7 +20,8 @@ export default class SearchSpaces extends React.Component{
 
     componentDidMount(){
         document.getElementById("nav-burger").addEventListener("click", (e)=>{
-            document.getElementById("nav-header").classList.toggle("display-header")
+            document.getElementById("nav-header").classList.add("display-header");
+            document.getElementById("nav-header").classList.remove("close-header")
         })
     }
 
@@ -165,10 +165,10 @@ export default class SearchSpaces extends React.Component{
                     {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
                 <div>
 
-                    <button id="nav-burger"className="hamburger hamburger--collapse" type="button">
-                        <span className="hamburger-box" >
-                            <span className="hamburger-inner"></span>
-                        </span>
+                    <button id="nav-burger" className="hamburger hamburger--collapse" type="button">
+                        <div></div>
+                        <div></div>
+                        <div></div>
                     </button>
 
                     <input

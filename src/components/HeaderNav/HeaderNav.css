@@ -39,16 +39,21 @@
 
 @media screen and (max-width: 770px){
     #nav-header{
-        display: none;
         top: 0;
         left: 0;
         height: 100vh;
         z-index: 4;
+        transform: translate(-100%);
         background-color: white;
     }
 
     .display-header{
-        display: block !important;
+        animation: open-mobile-menu .6s ease-in ;
+        transform: translate(0) !important;
+    }
+
+    .close-header{
+        animation: close-mobile-menu .5s ease-out;
     }
 
     #nav-container{
@@ -74,5 +79,25 @@
         border: 1px solid black;
         margin-left: auto;
         margin-right: 1em;
+    }
+}
+
+@keyframes open-mobile-menu{
+    from{
+        transform: translate(-100%);
+    }
+
+    to{ 
+        transform: translate(0);
+    }
+}
+
+@keyframes close-mobile-menu{
+    from{
+        transform: translate(0);
+    }
+
+    to{
+        transform: translate(-100%);
     }
 }

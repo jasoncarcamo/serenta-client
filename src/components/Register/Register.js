@@ -1,5 +1,6 @@
 import React from "react";
 import TokenService from "../../Services/TokenService";
+import "./Register.css";
 
 export default class Register extends React.Component{
     constructor(props){
@@ -45,10 +46,63 @@ export default class Register extends React.Component{
         })
     }
 
-    handleConfrimPassword = (e)=>{
+    handleConfirmPassword = (e)=>{
         this.setState({
             confirmPassword: e.target.value
         })
+    }
+
+    passwordMatch = ()=>{
+        const div = document.getElementById("password-matches");
+        console.log(div)
+        if(this.state.password === this.state.confirmPassword){
+            div.style.backgroundColor = "green"
+            return <p>Great! Your password matches</p>
+        } else{
+            div.style.backgroundColor = "red"
+            return <p>Your passwords do not match</p>
+        }
+        
+    };
+
+    validatePassword = (password) => {
+        
+        const REGEX_UPPER_LOWER_NUMBER_SPECIAL = (/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&])[\S]+/);
+
+        const requirements = [ 
+            <span key={0} className="reg_error" style={{color: 'gray'}}>Password must be longer than 8 characters</span>,
+            <span key={1} className="reg_error" style={{color: 'gray'}}>Password must be less than 72 characters</span>,
+            <span key={2} className="reg_error" style={{color: 'gray'}}>Password must not start or end with empty spaces</span>,
+            <span key={3} className="reg_error" style={{color: 'gray'}}>Password must contain one upper case, lower case, number and special character</span>
+        ]
+
+        if(password.length > 1){
+            if (password.length > 8) {
+                requirements[0] = <span key={0} className="reg_error" style={{color: 'green'}}>Password must be longer than 8 characters</span>
+              } else{
+      
+              }
+      
+              if (password.length < 72) {
+                requirements[1] = <span key={1} className="reg_error" style={{color: 'green'}}>Password must be less than 72 characters</span>
+              } else{
+      
+              };
+      
+              if (!password.startsWith(' ') || !password.endsWith(' ')) {
+                requirements[2] = <span key={2} className="reg_error" style={{color: 'green'}}>Password must not start or end with empty spaces</span>
+              } else{
+                
+              };
+      
+              if (!REGEX_UPPER_LOWER_NUMBER_SPECIAL.test(password)) {
+                  requirements[3] = <span key={3} className="reg_error" style={{color: 'gray'}}>Password must contain one upper case, lower case, number and special character</span>
+              } else{
+                  requirements[3] = <span key={3} className="reg_error" style={{color: 'green'}}>Password must contain one upper case, lower case, number and special character</span>
+              };
+        }
+        
+        return requirements
     }
 
     handleForm = (e)=>{
@@ -123,12 +177,19 @@ export default class Register extends React.Component{
                             value={this.state.password}
                             onChange={this.handlePassword}></input>
 
+                        <div id="password-confirm-box">
+                            {this.validatePassword(this.state.password)}
+                        </div>
+
                         <label htmlFor="register-confirm-password">Retype password</label>
                         <input 
                             id="register-confirm-password" 
                             type="password"
                             value={this.state.confirmPassword}
-                            onChange={this.handleConfrimPassword}></input>
+                            onChange={this.handleConfirmPassword}></input>
+                        
+                        <div id="password-matches">kk</div>
+                        {this.state.password && this.state.confirmPassword ? this.passwordMatch() : ""}
                         
                         {this.state.error ? <p>{this.state.error}</p> : ""}
 
