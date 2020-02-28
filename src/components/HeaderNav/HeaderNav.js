@@ -12,49 +12,62 @@ export default class HeaderNav extends React.Component{
     };
 
     componentDidMount(){
-        document.getElementById("close-menu").addEventListener("click", (e)=>{
-            document.getElementById("nav-header").classList.remove("display-header");
-            document.getElementById("nav-header").classList.add("close-header")
-        })
+    };
+
+    disableNavMenu = ()=>{
+        const menu = document.getElementById("nav-header");
+        
+        menu.classList.remove("display-header");
+        menu.classList.add("close-header");
+    }
+
+    toHome = ()=>{
+        this.props.history.push("/");
+        this.disableNavMenu();
     }
 
     toLogin = ()=>{
-        this.props.history.push("/login")
+        this.props.history.push("/login");
+        this.disableNavMenu();
     }
 
     toAdRegister = ()=>{
         this.props.history.push("/post-ad/register");
+        this.disableNavMenu();
     };
 
     notSignedIn = ()=>{
         return (
-            <div>
+            <>
                 <button onClick={this.toLogin}>Log In</button>
                 <button onClick={this.toAdRegister}>Post Ad</button>
-            </div> 
+            </> 
         );
     };
 
     toAccount = ()=>{
         this.props.history.push("/user");
+        this.disableNavMenu();
     };
 
     toPostAd = ()=>{
         this.props.history.push("/post-ad");
+        this.disableNavMenu();
     };
 
     signedIn = ()=>{
         return (
-            <div>
+            <>
                 <button onClick={this.toAccount}>Account</button>
                 <button onClick={this.toPostAd}>Post Ad</button>
-            </div>
+            </>
         )
     }
 
     handleSignOut = ()=>{
         TokenService.deleteToken();
         this.props.history.push("/");
+        this.disableNavMenu();
     }
 
     render(){
@@ -62,9 +75,16 @@ export default class HeaderNav extends React.Component{
             <header id="nav-header">
                 <nav id="nav-container">
                     
-                    <p id="close-menu">X</p>
-                    {TokenService.hasToken() ? <button id="log-out-button2" onClick={this.handleSignOut}>Log out</button> : ""}
+                    <p 
+                        id="close-menu"
+                        onClick={this.disableNavMenu}>X</p>
+
+                    <button id="home-button" onClick={this.toHome}>Home</button>
+
+                    {TokenService.hasToken() ? <button id="log-out-button1" onClick={this.handleSignOut}>Log out</button> : ""}
+
                     {TokenService.hasToken() ? this.signedIn() : this.notSignedIn()}
+                    
                     {TokenService.hasToken() ? <button id="log-out-button2" onClick={this.handleSignOut}>Log out</button> : ""}
                 </nav>
             </header>

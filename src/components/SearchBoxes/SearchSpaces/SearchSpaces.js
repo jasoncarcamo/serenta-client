@@ -21,10 +21,13 @@ export default class SearchSpaces extends React.Component{
     };
 
     componentDidMount(){
-        document.getElementById("nav-burger").addEventListener("click", (e)=>{
-            document.getElementById("nav-header").classList.add("display-header");
-            document.getElementById("nav-header").classList.remove("close-header")
-        })
+    }
+
+    disableMenu = ()=>{
+        const menu = document.getElementById("nav-header")
+        
+        menu.classList.add("display-header");
+        menu.classList.remove("close-header");
     }
 
     success = (position)=>{
@@ -167,7 +170,11 @@ export default class SearchSpaces extends React.Component{
                     {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
                 <div>
 
-                    <button id="nav-burger" className="hamburger hamburger--collapse" type="button">
+                    <button 
+                        id="nav-burger" 
+                        className="hamburger hamburger--collapse" 
+                        type="button"
+                        onClick={this.disableMenu}>
                         <div></div>
                         <div></div>
                         <div></div>

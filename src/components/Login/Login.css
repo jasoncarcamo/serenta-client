@@ -1,0 +1,56 @@
+#login-section{
+    width: 40em;
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#login-section legend{
+    text-align: center;
+}
+
+#login-fieldset{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border: none;
+}
+
+#login-fieldset label{
+    width: 18.5em;
+    margin: 1em auto .5em auto;
+
+}
+
+#login-fieldset input{
+    width: 25em;
+    height: 2.5em;
+    margin: 0 auto;
+    border: .06em solid black;
+}
+
+#login-submit{
+    width: 5em;
+    height: 2.5em;
+    font-size: 1em;
+    margin: 3em auto;
+}
+
+@media screen and (max-width: 770px){
+    #login-section{
+        width: 100%;
+        border: none;
+    }
+
+    #login-fieldset label{
+        width: 16.5em;
+    
+    }
+    
+    #login-fieldset input{
+        width: 20em;    
+    }
+    
+}

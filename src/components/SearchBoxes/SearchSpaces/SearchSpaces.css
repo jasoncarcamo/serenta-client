@@ -12,7 +12,7 @@
 #search-location input{
     display: block;
     position: absolute;  
-    top: 4.5em;  
+    top: 1em;  
     width: 40em;
     height: 3em;
     font-size: 1em;
@@ -25,18 +25,32 @@
 }
 
 #nav-burger{
-    display: none;
+    display: block;
     position: absolute;
-    
+    top: 2.5em;
+    left: 1.5em;
+    z-index: 3;
+    padding: 0;
+    margin: 0;
+    border-radius: 100%;
+    border: none;
+    background-color: white;
+}
+
+#nav-burger div{
+    width: 1.5em;
+    height: .25em;
+    margin: .25em 0;
+    background-color: black;
 }
 
 #search-spaces-input{
     width: 0;
     height: 0;
     position: absolute;
-    font-size: 1.7em;
+    font-size: 1.6em;
     z-index: 3;
-    top: 3em;
+    top: 1em;
     right: -1.25em;
     padding: 0;
     margin: 0 0 0 -1em;
@@ -49,7 +63,7 @@
 .autocomplete-dropdown-container{
     position: relative;
     width: 35em;
-    top: 7.5em;
+    top: 4em;
     left: 50%;
     transform: translate(-43%);
     background-color: white;
@@ -84,7 +98,7 @@
     }  
 
     #search-spaces-input{
-        top: .8em !important;
+        top: .9em !important;
         right: 2em !important;
     }
 
@@ -92,11 +106,6 @@
         display: block;
         top: 1.9em;
         left: 1.75em;
-        z-index: 3;
-        padding: 0;
-        margin: 0;
-        border-radius: 100%;
-        border: none;
         background-color: white;
     }
 

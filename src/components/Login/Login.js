@@ -1,5 +1,7 @@
 import React from "react";
 import TokenService from "../../Services/TokenService";
+import "./Login.css";
+import {Link} from "react-router-dom";
 
 export default class Login extends React.Component{
     constructor(props){
@@ -49,12 +51,12 @@ export default class Login extends React.Component{
 
     render(){
         return (
-            <section>
-                <form onSubmit={this.handleSubmit}>
-                    <fieldset>
+            <section id="login-section">
+                <form id="login-form" onSubmit={this.handleSubmit}>
+                    <fieldset id="login-fieldset">
 
                         <legend>
-                            <h2>Log in to your account</h2>
+                            <p>Not registered? Log in <Link to="/register">here</Link></p>
                         </legend>
 
                         <label htmlFor="login-email">Email:</label>
@@ -74,7 +76,7 @@ export default class Login extends React.Component{
 
                         {this.state.error ? <p>{this.state.error}</p> : ""}
 
-                        <button type="submit">Log In</button>
+                        <button id="login-submit" type="submit">Log In</button>
                     </fieldset>
                 </form>
             </section>

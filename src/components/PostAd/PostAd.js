@@ -1,6 +1,7 @@
 import React from "react";
 import TokenService from "../../Services/TokenService";
 import SpacesContext from "../../Contexts/SpacesContext/SpacesContext";
+import "./PostAd.css";
 
 export default class PostAd extends React.Component{
     constructor(props){
@@ -134,109 +135,134 @@ export default class PostAd extends React.Component{
     render(){
         
         return (
-            <section>
-                <form onSubmit={this.handleSubmit}>
-                    <fieldset>
+            <section id="post-ad-section">
+                <form id="post-ad-form" onSubmit={this.handleSubmit}>
+                    <fieldset id="post-ad-fieldset">
 
-                        <label htmlFor="post-ad-address">Address</label>
-                        <input 
+                        <label htmlFor="post-ad-address">
+                            Address: <input 
                             id="post-ad-address" 
                             type="text"
                             value={this.state.address} 
-                            onChange={this.handleAddress}></input>
+                            onChange={this.handleAddress}
+                            required></input>
+                        </label>
+                        
 
-                        <label htmlFor="post-ad-apartment">Apartment location: if applicable</label>
-                        <input 
+                        <label htmlFor="post-ad-apartment">
+                            Apartment location: if applicable <input 
                             id="post-ad-apartment" 
                             type="text" 
                             placeholder="E.g. A12"
                             value={this.state.apartment_location} 
                             onChange={this.handleApartmentLocation}></input>
+                        </label>
+                        
 
-                        <label htmlFor="post-ad-city">City:</label>
-                        <input 
+                        <label htmlFor="post-ad-city">
+                            City: <input 
                             id="post-ad-city" 
                             type="text"
                             value={this.state.city} 
-                            onChange={this.handleCity}/>
+                            onChange={this.handleCity}
+                            required/>
+                        </label>
+                        
 
-                        <label htmlFor="post-ad-state">State:</label>
-                        <input 
+                        <label htmlFor="post-ad-state">
+                            State: <input 
                             id="post-ad-state" 
                             type="text"
                             value={this.state.state} 
-                            onChange={this.handleState}></input>
+                            onChange={this.handleState}
+                            required></input>
+                        </label>
+                        
 
-                        <label htmlFor="post-ad-zipcode">Zip code:</label>
-                        <input 
+                        <label htmlFor="post-ad-zipcode">
+                            Zip code: <input 
                             id="post-ad-zipcode" 
                             type="text"
                             value={this.state.zip_code} 
-                            onChange={this.handleZipcode}></input>
+                            onChange={this.handleZipcode}
+                            required></input>
+                        </label>
+                    
 
-                        <label htmlFor="register-ad-type">Living space type:</label>
-
-                        <select 
+                        <label htmlFor="register-ad-type">
+                            Living space type: <select 
                             id="register-ad-type" 
                             value={this.state.space_type} 
                             onChange={this.handleSpaceType}>
-                            <option value="Bedroom">Bed Room</option>
-                            <option value="Apartment">Apartment</option>
-                        </select>
+                                <option value="Bedroom">Bed Room</option>
+                                <option value="Apartment">Apartment</option>
+                            </select>
+                        </label>
 
-                        <label htmlFor="register-ad-rooms">Number of rooms:</label>
-                        <select 
+                        <label htmlFor="register-ad-rooms">
+                            Number of rooms: <select 
                             id="register-ad-rooms" 
                             value={this.state.room_amount} 
                             onChange={this.handleRoomAmount}>
-                            <option value="1 room">1</option>
-                            <option value="2 rooms">2</option>
-                            <option value="3 rooms">3</option>
-                            <option value="4 rooms">3</option>
-                        </select>
+                                <option value="1 room">1</option>
+                                <option value="2 rooms">2</option>
+                                <option value="3 rooms">3</option>
+                                <option value="4 rooms">3</option>
+                            </select>
+                        </label>
+                        
 
-                        <label htmlFor="register-ad-bathrooms">Number of bathrooms:</label>
-                        <select 
+                        <label htmlFor="register-ad-bathrooms">
+                            Number of bathrooms: <select 
                             id="register-ad-bathrooms" 
                             value={this.state.bathroom_amount} 
                             onChange={this.handleBathroomAmount}>
-                            <option value="1 bathroom">1</option>
-                            <option value="2 bathrooms">2</option>
-                            <option value="3 bathrooms">3</option>
-                            <option value="4 bathrooms">4</option>
-                        </select>
+                                <option value="1 bathroom">1</option>
+                                <option value="2 bathrooms">2</option>
+                                <option value="3 bathrooms">3</option>
+                                <option value="4 bathrooms">4</option>
+                            </select>
+                        </label>
 
-                        <label htmlFor="register-ad-pets">Pets:</label>
-                        <select 
+                        <label htmlFor="register-ad-pets">
+                            Pets: <select 
                             id="register-ad-pets" 
                             value={this.state.pets} 
                             onChange={this.handlePets}>
-                            <option value="No pets">No pets</option>
-                            <option value="Dogs ok">Dogs ok</option>
-                            <option value="Cats ok">Cats ok</option>
-                            <option value="Dogs and Cats ok">Dogs and Cats ok</option>
-                        </select>
+                                <option value="No pets">No pets</option>
+                                <option value="Dogs ok">Dogs ok</option>
+                                <option value="Cats ok">Cats ok</option>
+                                <option value="Dogs and Cats ok">Dogs and Cats ok</option>
+                            </select>
+                        </label>
 
-                        <label htmlFor="register-ad-price">Price</label>
-                        <input 
+                        <label htmlFor="register-ad-price">
+                            Price: <input 
                             id="register-ad-price" 
                             type="number"
                             value={this.state.price} 
                             onChange={this.handlePrice}
-                            placeholder="How much monthly?"></input>
+                            placeholder="How much monthly?"
+                            required></input>
+                        </label>
+                        
 
-                        <label htmlFor="register-ad-mobile-number">Confirm mobile number:</label>
-                        <input 
+                        <label htmlFor="register-ad-mobile-number">
+                            Confirm mobile number: <input 
                             id="register-ad-mobile-number"
                             type="text"
                             value={this.state.mobile_number}
                             onChange={this.handleMobileNumber}
+                            required
                             />
+                        </label>
 
-                        <label htmlFor="register-ad-images">Images</label>
-                        <input 
+                        <label htmlFor="register-ad-images">
+                            Images: <input 
                             id="register-ad-images" 
-                            type="file"></input>
+                            type="file"
+                            multiple></input>
+                        </label>
 
                         {this.state.error ? <p>{this.state.error}</p> : ""}
 

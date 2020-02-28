@@ -1,6 +1,7 @@
 import React from "react";
 import TokenService from "../../Services/TokenService";
 import "./Register.css";
+import {Link} from "react-router-dom";
 
 export default class Register extends React.Component{
     constructor(props){
@@ -138,10 +139,13 @@ export default class Register extends React.Component{
     render(){
 
         return (
-            <section>
-                <form onSubmit={this.handleForm}>
-                    <fieldset>
-
+            <section id="register-section">
+                
+                <form id="register-form" onSubmit={this.handleForm}>
+                    <fieldset id="register-fieldset">
+                        <legend>
+                            <p>Already registered? <Link to="/login">Log in</Link></p>
+                        </legend>
                         <label htmlFor="register-first-name">First name</label>
                         <input 
                             id="register-first-name" 
@@ -188,12 +192,12 @@ export default class Register extends React.Component{
                             value={this.state.confirmPassword}
                             onChange={this.handleConfirmPassword}></input>
                         
-                        <div id="password-matches">kk</div>
+                        <div id="password-matches"></div>
                         {this.state.password && this.state.confirmPassword ? this.passwordMatch() : ""}
                         
                         {this.state.error ? <p>{this.state.error}</p> : ""}
 
-                        <button type="submit">Register</button>
+                        <button id="register-submit" type="submit">Register</button>
                     </fieldset>
                 </form>
             </section>

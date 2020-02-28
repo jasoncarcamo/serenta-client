@@ -1,3 +1,78 @@
+#register-section{
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    overflow: auto;
+}
+
+#register-section legend{
+    text-align: center;
+}
+
+#register-form{
+    width: 40em;
+    margin: 5em auto 0 auto;
+}
+
+#register-fieldset{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border: none;
+}
+
+#register-fieldset label{
+    width: 18.5em;
+    margin: 1em auto .5em auto;
+
+}
+
+#register-fieldset input{
+    width: 25em;
+    height: 2.5em;
+    margin: 0 auto;
+    border: .06em solid black;
+}
+
+#register-fieldset div{
+    width: 18.5em;
+    margin: 0 auto;
+}
+
+#register-submit{
+    width: 5em;
+    height: 2.5em;
+    font-size: 1em;
+    margin: 3em auto;
+}
+
 #password-matches{
     background-color: gray;
+    height: .3em;
 }
+
+@media screen and (max-width: 770px){
+    #register-section{
+        width: 100%;
+        height: 100vh;
+        border: none;
+    }
+
+    #register-form{
+        width: 100%;
+    }
+
+    #register-fieldset label{
+        width: 16.5em;    
+    }
+    
+    #register-fieldset input{
+        width: 20em;    
+    }
+
+    #register-fieldset div{
+        width: 16.8em;
+    }
+    
+}
+

@@ -5,6 +5,7 @@ import {Route} from "react-router-dom";
 import TokenService from "../Services/TokenService";
 import SpacesContext from "../Contexts/SpacesContext/SpacesContext";
 
+import MenuBurger from "../components/HeaderNav/MenuBurger";
 import HeaderNav from "../components/HeaderNav/HeaderNav";
 import Login from "../components/Login/Login";
 import Register from "../components/Register/Register";
@@ -34,7 +35,7 @@ class App extends React.Component {
     componentDidMount(){
 
         this.enableGps();
-        
+    
         this.setState({
             ads: this.context.ads
         });
@@ -152,8 +153,8 @@ class App extends React.Component {
         return (
             <section id="routes-container">
         
-                <Route exact path="/" component={HeaderNav}></Route>
-
+                <Route path="/" component={HeaderNav}></Route>
+                <Route path="/" component={MenuBurger}></Route>
                 {this.renderSearchInputs()}
         
                 <Route 

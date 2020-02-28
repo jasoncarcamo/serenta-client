@@ -2,28 +2,48 @@
     position: absolute;
     margin: 0;
     padding: 0;
+    width: 100%;
+    height: 4.5em;
     z-index: 4;
-    top: 1.25em;
-    right: 0;
+    top: 0;
+    left: 0;
+    transform: translate(-100%);
+    background-color: white;
+}
+
+.display-header{
+    display: block !important;
+    animation: open-menu .5s ease-in ;
+    transform: translate(0) !important;
+}
+
+.close-header{
+    animation: close-menu .5s ease-out;
 }
 
 #nav-container {
     display: flex;
-    position: relative;
-    justify-content: flex-end;
-    align-items: center;
+    width: 100%;
+    justify-content: space-evenly;
     margin: 0;
     padding: 0;
 }
 
+#nav-container div{
+}
+
 #nav-container button{
-    margin: 0 3em 0 -2.5em;
+    margin: 1em 3em 1em 0;
     width: 6em;
     height: 3em;
     border: none;
     background-color: white;
     border-radius: 1em;
     border: .2em solid black;
+}
+
+#home-button{
+    margin-left: 15em;
 }
 
 #log-out-button1{
@@ -38,13 +58,20 @@
 }
 
 #close-menu{
-    display: none
+    display: block;
+    position: relative;
+    width: 1.5em;
+    text-align: center;
+    font-size: 1em;
+    margin-right: 1em;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 770px){
     #nav-header{
         top: 0;
         left: 0;
+        width: 100%;
         height: 100vh;
         z-index: 4;
         transform: translate(-100%);
@@ -52,10 +79,11 @@
     }
 
     .display-header{
+        display: block !important;
         animation: open-mobile-menu .6s ease-in ;
         transform: translate(0) !important;
     }
-
+    
     .close-header{
         animation: close-mobile-menu .5s ease-out;
     }
@@ -63,6 +91,9 @@
     #nav-container{
         flex-direction: column;
         justify-content: space-evenly;
+        align-items: center;
+        position: relative;
+        height: 100%;
     }
 
     #nav-container div{
@@ -87,13 +118,33 @@
     #close-menu{
         display: block;
         position: relative;
-        width: 2em;
         text-align: center;
         margin-left: auto;
-        margin-right: 1em;
+        margin-right: 3em;
     }
 }
 
+/* Screens wider than mobile phone animations */
+@keyframes open-menu{
+    from{
+        transform: translate(0, -100%);
+    }
+
+    to{ 
+        transform: translate(0);
+    }
+}
+
+@keyframes close-menu{
+    from{
+        transform: translate(0);
+    }
+
+    to{
+        transform: translate(0, -100%);
+    }
+}
+/* Mobile animations*/
 @keyframes open-mobile-menu{
     from{
         transform: translate(-100%);

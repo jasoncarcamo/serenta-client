@@ -1,0 +1,51 @@
+#post-ad-section{
+    overflow: auto;
+    height: 100vh;
+}
+
+#post-ad-fieldset{
+    display: flex;
+    justify-content: space-evenly !important;
+    align-items: center;
+    padding: 2em;
+    margin: 0;
+}
+
+#post-ad-fieldset label{
+    display: block;
+    padding: 0;
+    margin: 1em auto 0 auto;
+    width: 13em;
+}
+
+#post-ad-fieldset input{
+    height: 2.6em;
+    width: 25em;
+}
+
+#post-ad-fieldset select{
+    width: 7em;
+    margin: 0 auto;
+    align-self: flex-end;
+}
+
+@media screen and (max-width: 770px){
+    #post-ad-section{
+        height: 100vh;
+        overflow: auto;
+    }
+
+    #post-ad-fieldset{
+        width: 100%;
+        padding: 1em 2em;
+    }
+
+    #post-ad-fieldset label{
+        width: 90%;
+    }
+
+    #post-ad-fieldset input{
+        width: 7em;
+        margin: 0;
+    }
+}
