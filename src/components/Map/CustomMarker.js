@@ -35,6 +35,10 @@ export default class Customarker extends React.Component{
         return this.props.ad.address + " " + this.props.ad.city + " " + this.props.ad.state + " " + this.props.ad.zip_code;
     }
 
+    addressForMap = ()=>{
+        return `https://google.com/maps/search/?api=1&query=${this.props.ad.address}+${this.props.ad.city}+${this.props.ad.state}+${this.props.ad.zip_code}`;
+    }
+
     renderAdInfo = ()=>{
         console.log(this.props.ad)
         return (
@@ -52,7 +56,8 @@ export default class Customarker extends React.Component{
                         
                         <p>
                             <strong>Address: </strong>
-                            {this.getAddress()}
+                            <a href={this.addressForMap()} target="_blank">{this.getAddress()}</a>
+                            
                         </p>
 
                         <p>

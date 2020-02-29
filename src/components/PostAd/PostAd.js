@@ -11,13 +11,15 @@ export default class PostAd extends React.Component{
             apartment_location: "",
             city: "",
             state: "",
-            zip_code: "",
+            zip_code: "",            
+            mobile_number: "",
             space_type: "Bedroom",
             room_amount: "1 room",
             bathroom_amount: "1 bathroom",
             pets: "No pets",
             price: "",
-            mobile_number: "",
+            includes: "",
+            special_comments: "",
             error: ""
         };
     };
@@ -70,6 +72,18 @@ export default class PostAd extends React.Component{
         })
     }
 
+    handleIncludes = (e)=>{
+        this.setState({
+            includes: e.target.value
+        });
+    }
+
+    handleSpecialComments = (e)=>{
+        this.setState({
+            special_comments: e.target.value
+        });
+    }
+
     getAddress = ()=>{
         let address = this.state.address + ", " + this.state.city + ", " + this.state.state + ", " + this.state.zip_code
         
@@ -102,14 +116,16 @@ export default class PostAd extends React.Component{
                         city: this.state.city,
                         state: this.state.state,
                         zip_code: this.state.zip_code,
+                        mobile_number: this.state.mobile_number,
                         space_type: this.state.space_type,
                         room_amount: this.state.room_amount,
                         bathroom_amount: this.state.bathroom_amount,
                         pets: this.state.pets,
                         price: this.state.price,
-                        mobile_number: this.state.mobile_number,
                         lat: locationData.results[0].geometry.location.lat,
-                        lng: locationData.results[0].geometry.location.lng
+                        lng: locationData.results[0].geometry.location.lng,
+                        includes: this.state.includes,
+                        special_comments: this.state.special_comments
                     })
                 })
                     .then( adsRes => {
@@ -263,6 +279,15 @@ export default class PostAd extends React.Component{
                             type="file"
                             multiple></input>
                         </label>
+
+                        <label 
+                            htmlFor="register-ad-includes">includes:</label>
+                        <textarea value={this.state.includes} onChange={this.handleIncludes}/>
+
+                        <label 
+                            htmlFor="register-ad--special-comments">Comments:</label>
+                        <textarea value={this.state.special_comments} onChange={this.handleSpecialComments}/>
+
 
                         {this.state.error ? <p>{this.state.error}</p> : ""}
 
