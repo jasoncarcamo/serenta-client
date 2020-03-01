@@ -5,6 +5,10 @@
     overflow: auto;
 }
 
+#register-section p{
+    text-align: center;
+}
+
 #register-section legend{
     text-align: center;
 }

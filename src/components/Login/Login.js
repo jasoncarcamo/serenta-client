@@ -2,6 +2,8 @@ import React from "react";
 import TokenService from "../../Services/TokenService";
 import "./Login.css";
 import {Link} from "react-router-dom";
+import LoadingIcon from "../LoadingIcon/LoadingIcon";
+
 
 export default class Login extends React.Component{
     constructor(props){
@@ -9,7 +11,8 @@ export default class Login extends React.Component{
         this.state = {
             email: "",
             password: "",
-            error: ""
+            error: "",
+            loading: false
         };
     };
 
@@ -23,6 +26,10 @@ export default class Login extends React.Component{
 
     handleSubmit = (e)=>{
         e.preventDefault();
+
+        this.setState({
+            loading: true
+        })
 
         fetch(`http://localhost:8000/api/login`, {
             method: "POST",
@@ -44,9 +51,14 @@ export default class Login extends React.Component{
             .then( resData => {
                 
                 TokenService.saveToken(resData.token);
+
+                this.setState({
+                    loading: false
+                });
+
                 this.props.history.push("/user");
             })
-            .catch( err => { this.setState({ error: err.error })});
+            .catch( err => { this.setState({ error: err.error, loading: false })});
     };
 
     render(){
@@ -75,6 +87,8 @@ export default class Login extends React.Component{
                         ></input>
 
                         {this.state.error ? <p>{this.state.error}</p> : ""}
+
+                        {this.state.loading ? <LoadingIcon/> : ""}
 
                         <button id="login-submit" type="submit">Log In</button>
                     </fieldset>

@@ -1,7 +1,7 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import "./HeaderNav.css";
 import TokenService from "../../Services/TokenService";
+import ReactLoading from "react-loading";
 
 export default class HeaderNav extends React.Component{
     constructor(props){

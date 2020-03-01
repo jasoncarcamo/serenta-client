@@ -2,6 +2,7 @@ import React from "react";
 import TokenService from "../../Services/TokenService";
 import "./Register.css";
 import {Link} from "react-router-dom";
+import LoadingIcon from "../LoadingIcon/LoadingIcon";
 
 export default class Register extends React.Component{
     constructor(props){
@@ -13,7 +14,8 @@ export default class Register extends React.Component{
             mobile_number: "",
             password: "",
             confirmPassword: "",
-            error: ""
+            error: "",
+            loading: false
         };
     };
 
@@ -109,6 +111,10 @@ export default class Register extends React.Component{
     handleForm = (e)=>{
         e.preventDefault();
 
+        this.setState({
+            loading: true
+        });
+
         fetch("http://localhost:8000/api/register", {
             method: "POST",
             headers: {
@@ -131,9 +137,14 @@ export default class Register extends React.Component{
             })
             .then( resData => {
                 TokenService.saveToken(resData.token);
+
+                this.setState({
+                    loading: false
+                });
+
                 this.props.history.push("/");
             })
-            .catch( err => this.setState({ error: err.error}))
+            .catch( err => this.setState({ error: err.error, loading: false}))
     }
 
     render(){
@@ -196,6 +207,8 @@ export default class Register extends React.Component{
                         {this.state.password && this.state.confirmPassword ? this.passwordMatch() : ""}
                         
                         {this.state.error ? <p>{this.state.error}</p> : ""}
+
+                        {this.state.loading ? <LoadingIcon/> : ""}
 
                         <button id="register-submit" type="submit">Register</button>
                     </fieldset>
