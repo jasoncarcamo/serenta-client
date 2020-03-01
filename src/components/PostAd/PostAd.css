@@ -9,6 +9,7 @@
     align-items: center;
     padding: 2em;
     margin: 0;
+    border: none;
 }
 
 #post-ad-fieldset label{
@@ -29,10 +30,21 @@
     align-self: flex-end;
 }
 
+#post-ad-fieldset textarea{
+    width: 90%;
+    margin: 0 auto;
+    height: 13em;
+}
+
+#post-ad-submit{
+    margin: 2em auto;
+    width: 5em;
+    height: 2em;
+    font-size: 1em;
+}
+
 @media screen and (max-width: 770px){
     #post-ad-section{
-        height: 100vh;
-        overflow: auto;
     }
 
     #post-ad-fieldset{
@@ -45,7 +57,7 @@
     }
 
     #post-ad-fieldset input{
-        width: 7em;
+        width: 90%;
         margin: 0;
     }
 }

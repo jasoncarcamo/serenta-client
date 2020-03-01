@@ -105,16 +105,6 @@
     #nav-container button{
         margin: 1em;
     }
-
-    #log-out-button1{
-        display: block;
-        align-self: flex-end !important;
-    }
-
-    #log-out-button2{
-        display: none;
-    }
-
     #close-menu{
         display: block;
         position: relative;

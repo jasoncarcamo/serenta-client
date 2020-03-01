@@ -56,7 +56,7 @@ export default class Login extends React.Component{
                     <fieldset id="login-fieldset">
 
                         <legend>
-                            <p>Not registered? Log in <Link to="/register">here</Link></p>
+                            <p>Not registered? Register <Link to="/register">here</Link></p>
                         </legend>
 
                         <label htmlFor="login-email">Email:</label>

@@ -81,8 +81,6 @@ export default class HeaderNav extends React.Component{
 
                     <button id="home-button" onClick={this.toHome}>Home</button>
 
-                    {TokenService.hasToken() ? <button id="log-out-button1" onClick={this.handleSignOut}>Log out</button> : ""}
-
                     {TokenService.hasToken() ? this.signedIn() : this.notSignedIn()}
                     
                     {TokenService.hasToken() ? <button id="log-out-button2" onClick={this.handleSignOut}>Log out</button> : ""}

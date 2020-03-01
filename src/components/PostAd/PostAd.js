@@ -291,7 +291,7 @@ export default class PostAd extends React.Component{
 
                         {this.state.error ? <p>{this.state.error}</p> : ""}
 
-                        <button type="submit">Post Ad</button>
+                        <button id="post-ad-submit" type="submit">Post Ad</button>
                     </fieldset>
                 </form>
             </section>
