@@ -18,15 +18,12 @@ body {
 #root{
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 
 #root > section{
-  margin: 0;
+  margin: 5em 0 0 0;
   padding: 0;
-}
-
-#root > section >section{
-  margin-top: 5em;
 }
 
 code {

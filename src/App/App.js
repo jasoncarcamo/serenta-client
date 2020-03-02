@@ -9,6 +9,7 @@ import MenuBurger from "../components/HeaderNav/MenuBurger";
 import HeaderNav from "../components/HeaderNav/HeaderNav";
 import Login from "../components/Login/Login";
 import Register from "../components/Register/Register";
+import User from "../components/User/User";
 import PostAd from "../components/PostAd/PostAd";
 import Map from "../components/Map/Map";
 import ToggleSearchBox from "../components/ToggleSearchBox/ToggleSearchBox";
@@ -177,6 +178,7 @@ class App extends React.Component {
                 <Route exact path="/login" component={Login}></Route>
                 <Route exact path="/register" component={Register}></Route>                
                 {TokenService.hasToken() ? "" : <Route exact path="/post-ad/register" component={Register}></Route>}
+                <Route path="/user" component={User}></Route>
                 <Route exact path="/post-ad" component={PostAd}></Route>
         
             </section>

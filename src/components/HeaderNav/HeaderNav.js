@@ -12,7 +12,17 @@ export default class HeaderNav extends React.Component{
     };
 
     componentDidMount(){
+        this.disableScroll();
     };
+
+    disableScroll = ()=>{
+        const navHeader = document.getElementById("nav-header");
+        
+        navHeader.addEventListener("touchmove", (e)=>{
+            e.preventDefault();
+            console.log("Scrolling")
+        })
+    }
 
     disableNavMenu = ()=>{
         const menu = document.getElementById("nav-header");

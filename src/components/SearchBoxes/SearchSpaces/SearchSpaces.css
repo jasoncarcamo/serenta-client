@@ -83,6 +83,7 @@
         width: 100vw;
         height: 4.5em;
         margin: 0;
+        top: 0;
         left: 0;
         transform: translate(0);
         background-color: white;
