@@ -35,7 +35,7 @@ class App extends React.Component {
     componentDidMount(){
 
         this.enableGps();
-    
+
         this.setState({
             ads: this.context.ads
         });
@@ -116,10 +116,9 @@ class App extends React.Component {
         for(const [spaceKey, spaceValue] of Object.entries(spaces)){
             
             filteredSpaces = filteredSpaces.filter( ( ad, index)=> {
-                console.log( ad[spaceKey], spaceValue)
 
                 if(ad.price && spaceKey === "price"){
-                    console.log(spaceKey)
+                    
                     return Number(ad[spaceKey]) <= Number(spaceValue) ? ad : "";
                 }
 

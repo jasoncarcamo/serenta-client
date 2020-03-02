@@ -1,6 +1,6 @@
 import React from "react";
 import {Marker, InfoWindow} from "@react-google-maps/api";
-import "./CustomMarker";
+import "./CustomMarker.css";
 
 const windowsInfoStyle = {
     width: "35em",
@@ -47,8 +47,7 @@ export default class Customarker extends React.Component{
                 onCloseClick={()=>{this.setState({ open: false})}}
                 >
                 <section 
-                    className="ad-info" 
-                    style={this.state.screenWidth > 770 ? windowsInfoStyle : mobileInfoStyle}>
+                    className="ad-info">
 
                         <h2>
                             <strong>{this.props.ad.space_type}</strong>
@@ -77,7 +76,9 @@ export default class Customarker extends React.Component{
                         </p>
 
                         <p>
-                            <strong><a href={`tel:${this.props.ad.mobile_number}`}>Call now: {this.props.ad.mobile_number}</a></strong>
+                            <button>
+                                <a href={`tel:${this.props.ad.mobile_number}`}>Call now</a>
+                            </button>
                         </p>
 
                         <p>
@@ -110,7 +111,7 @@ export default class Customarker extends React.Component{
     }
 
     render(){
-        console.log(this.props)
+        
         return (
             <section className="marker">
                 

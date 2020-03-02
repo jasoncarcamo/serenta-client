@@ -24,7 +24,8 @@ export default class Map extends React.Component{
 
         this.setState({
             ads: this.props.ads
-        })
+        });
+        
     }
 
     

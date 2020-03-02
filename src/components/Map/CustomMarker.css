@@ -21,15 +21,19 @@
 
 .ad-info{
     margin: 0;
-    padding: 0;
+    padding: 3em;
     height: auto;
-    width: 50em;  
-    border: 10em solid black;
+    width: auto;  
     z-index: 4 !important;
+    text-align: center;
+}
+
+.ad-info h2{
+    text-align: center;
 }
 
 @media screen and (max-width: 770px){
     .ad-info{
-        width: 25em;  
+        padding: 0;
     }
 }

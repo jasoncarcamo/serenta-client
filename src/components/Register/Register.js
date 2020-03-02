@@ -57,7 +57,7 @@ export default class Register extends React.Component{
 
     passwordMatch = ()=>{
         const div = document.getElementById("password-matches");
-        console.log(div)
+
         if(this.state.password === this.state.confirmPassword){
             div.style.backgroundColor = "green"
             return <p>Great! Your password matches</p>
@@ -106,6 +106,19 @@ export default class Register extends React.Component{
         }
         
         return requirements
+    }
+
+    errorMessanger = (error) => {
+        
+        if(error == "You seem to have an account already"){
+
+            return (
+                <p>{error}. Log in<Link to="/login"> here</Link></p>
+            );
+        } else{
+            
+            return <p>{error}</p>
+        };
     }
 
     handleForm = (e)=>{
@@ -206,7 +219,7 @@ export default class Register extends React.Component{
                         <div id="password-matches"></div>
                         {this.state.password && this.state.confirmPassword ? this.passwordMatch() : ""}
                         
-                        {this.state.error ? <p>{this.state.error}</p> : ""}
+                        {this.state.error ? this.errorMessanger(this.state.error) : ""}
 
                         {this.state.loading ? <LoadingIcon/> : ""}
 
