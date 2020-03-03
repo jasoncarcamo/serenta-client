@@ -1,7 +1,7 @@
 import React from "react";
 import "./HeaderNav.css";
 import TokenService from "../../Services/TokenService";
-import ReactLoading from "react-loading";
+import SpaceContext from "../../Contexts/SpacesContext/SpacesContext";
 
 export default class HeaderNav extends React.Component{
     constructor(props){
@@ -10,6 +10,8 @@ export default class HeaderNav extends React.Component{
 
         };
     };
+
+    static contextType = SpaceContext;
 
     componentDidMount(){
         this.disableScroll();
@@ -20,7 +22,6 @@ export default class HeaderNav extends React.Component{
         
         navHeader.addEventListener("touchmove", (e)=>{
             e.preventDefault();
-            console.log("Scrolling")
         })
     }
 
@@ -75,6 +76,7 @@ export default class HeaderNav extends React.Component{
     }
 
     handleSignOut = ()=>{
+        this.context.refresh();
         TokenService.deleteToken();
         this.props.history.push("/");
         this.disableNavMenu();

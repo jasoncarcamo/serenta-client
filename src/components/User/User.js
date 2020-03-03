@@ -17,6 +17,9 @@ export default class User extends React.Component{
 
     static contextType = UserContext;
     
+    componentDidMount(){
+
+    }
 
     render(){
         console.log(this.state.ads, this.context.ads)

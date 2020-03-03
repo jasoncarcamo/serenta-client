@@ -2,7 +2,7 @@ import React from "react";
 
 const SpacesContext = React.createContext({
     ads: [],
-    fresh: ()=>{}
+    refresh: ()=>{}
 })
 
 export default SpacesContext;
@@ -61,7 +61,7 @@ export class SpacesProvider extends React.Component{
             ads: this.state.ads,
             refresh: this.refresh
         };
-        
+        console.log(this.state)
         return (
             <SpacesContext.Provider value={value}>
                 {this.state.loading ? <p>Loading screen</p> : this.props.children}

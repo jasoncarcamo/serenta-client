@@ -99,7 +99,7 @@ export class UserProvider extends React.Component{
         const value = {
             ads: this.state.ads
         };
-        console.log(this.state.ads, value)
+        console.log(this.state)
         return (
             <UserContext.Provider value={value}>
                 {this.props.children}

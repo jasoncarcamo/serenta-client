@@ -30,7 +30,7 @@ export default class AdsContainer extends React.Component{
         
         return (
             <section id="user-ad-container">
-                {this.props.ads.length > 0 ? this.renderAds() : <p>You do not have any ads listed</p>}
+                {this.props.ads ? this.renderAds() : <p>You do not have any ads listed</p>}
             </section>
         )
     }

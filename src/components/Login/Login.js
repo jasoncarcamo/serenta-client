@@ -3,6 +3,7 @@ import TokenService from "../../Services/TokenService";
 import "./Login.css";
 import {Link} from "react-router-dom";
 import LoadingIcon from "../LoadingIcon/LoadingIcon";
+import SpaceContext from "../../Contexts/SpacesContext/SpacesContext";
 
 
 export default class Login extends React.Component{
@@ -15,6 +16,8 @@ export default class Login extends React.Component{
             loading: false
         };
     };
+
+    static contextType = SpaceContext;
 
     handleEmail = (e)=>{
         this.setState({ email: e.target.value });
@@ -53,6 +56,8 @@ export default class Login extends React.Component{
                 
                 TokenService.saveToken(resData.token);
 
+                this.context.refresh();
+                
                 this.setState({
                     loading: false
                 });

@@ -3,6 +3,7 @@ import logo from '../logo.svg';
 import './App.css';
 import {Route} from "react-router-dom";
 import TokenService from "../Services/TokenService";
+import VisitorService from "../Services/VisitorService";
 import SpacesContext from "../Contexts/SpacesContext/SpacesContext";
 
 import MenuBurger from "../components/HeaderNav/MenuBurger";
@@ -34,7 +35,7 @@ class App extends React.Component {
     static contextType = SpacesContext;
 
     componentDidMount(){
-
+        console.log(VisitorService.hasToken())
         this.enableGps();
 
         this.setState({
