@@ -1,5 +1,6 @@
 import React from "react";
 import Ad from "./Ad/Ad";
+import "./AdsContainer.css";
 
 export default class AdsContainer extends React.Component{
     constructor(props){
@@ -26,10 +27,10 @@ export default class AdsContainer extends React.Component{
     }
 
     render(){
-        console.log(this.state.ads)
+        
         return (
-            <section>
-                {this.props.ads ? this.renderAds() : <p>You do not have any listed ads</p>}
+            <section id="user-ad-container">
+                {this.props.ads.length > 0 ? this.renderAds() : <p>You do not have any ads listed</p>}
             </section>
         )
     }

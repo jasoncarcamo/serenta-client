@@ -4,7 +4,11 @@
 
 #user-header button{
     display: block;
+    font-size: 1em;
+    width: 6em;
+    height: 3em;
     margin: 10em 4em 0 auto;
+    border: none;
 }
 
 @media screen and (max-width: 770px){

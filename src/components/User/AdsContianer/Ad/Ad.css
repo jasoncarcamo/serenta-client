@@ -2,6 +2,7 @@
     padding: 2em 0;
     min-height: 8em;
     margin: 1em auto;
+    width: 80%;
     border: .05em solid black;
     text-align: center;
 }
