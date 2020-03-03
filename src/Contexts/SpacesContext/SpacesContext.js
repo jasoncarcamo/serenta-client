@@ -52,6 +52,7 @@ export class SpacesProvider extends React.Component{
         });
 
         this.componentDidMount();
+        
     }
 
     render(){

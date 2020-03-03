@@ -1,0 +1,14 @@
+#user-section{
+    
+}
+
+#user-header button{
+    display: block;
+    margin: 10em 4em 0 auto;
+}
+
+@media screen and (max-width: 770px){
+    #user-header button{
+        margin: 10em 2em 0 auto;
+    }
+}

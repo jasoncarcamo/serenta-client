@@ -1,0 +1,26 @@
+.user-ad{
+    padding: 2em 0;
+    min-height: 8em;
+    margin: 1em auto;
+    border: .05em solid black;
+    text-align: center;
+}
+
+.user-ad button{
+    width: 5em;
+    height: 2em;
+    font-size: 1em;
+    margin-top: 2em;
+}
+
+.ad-deletion-box{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.ad-deletion-box button{
+    display: block;
+    position: relative;
+    align-self: flex-end;
+    bottom: 0;
+}

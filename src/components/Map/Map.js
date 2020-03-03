@@ -76,122 +76,6 @@ export default class Map extends React.Component{
         return ads;
     }
 
-    renderTestAds = (clusterer)=>{
-        var features = [
-            
-            {
-                lat: -33.91721, 
-                lng: 151.22630,
-              type: 'info'
-            }, 
-            {
-                lat: -33.91539, 
-                lng: 151.22820,
-              type: 'info'
-            }, 
-            {
-                lat: -33.91747, 
-                lng: 151.22912,
-              type: 'info'
-            }, 
-            {
-                lat: -33.91910, 
-                lng: 151.22907,
-              type: 'info'
-            }, 
-            {
-                lat: -33.91725, 
-                lng: 151.23011,
-              type: 'info'
-            }, 
-            {
-                lat: -33.91872, 
-                lng: 151.23089,
-              type: 'info'
-            }, 
-            {
-                lat: -33.91784, 
-                lng: 151.23094,
-              type: 'info'
-            }, 
-            {
-                lat: -33.91682, 
-                lng: 151.23149,
-              type: 'info'
-            }, 
-            {
-                lat: -33.91790, 
-                lng: 151.23463,
-              type: 'info'
-            }, 
-            {
-                lat: -33.91666, 
-                lng: 151.23468,
-              type: 'info'
-            }, 
-            {
-                lat: -33.916988, 
-                lng: 151.23364,
-              type: 'info'
-            }, 
-            {
-                lat: -33.91662347903106, 
-                lng: 151.22879464019775,
-              type: 'parking'
-            }, 
-            {
-                lat: -33.916365282092855, 
-                lng: 151.22937399734496,
-              type: 'parking'
-            }, 
-            {
-                lat: -33.91665018901448, 
-                lng: 151.2282474695587,
-              type: 'parking'
-            }, 
-            {
-                lat: -33.919543720969806, 
-                lng: 151.23112279762267,
-              type: 'parking'
-            }, 
-            {
-                lat: -33.91608037421864, 
-                lng: 151.23288232673644,
-              type: 'parking'
-            }, 
-            {
-                lat: -33.91851096391805, 
-                lng: 151.2344058214569,
-              type: 'parking'
-            }, 
-            {
-                lat: -33.91818154739766, 
-                lng: 151.2346203981781,
-              type: 'parking'
-            }, 
-            {
-                lat: -33.91727341958453, 
-                lng: 151.23348314155578,
-              type: 'library'
-            }
-          ];
-
-          features = features.map( (position, index)=> {
-                let markerPosition = {
-                    lat: position.lat,
-                    lng: position.lng
-                }
-
-                let ad = {
-                    address: "An address"
-                };
-
-              return <CustomMarker key={index} ad={ad} position={markerPosition} clusterer={clusterer}/> 
-          });
-
-          return features
-    }
-
     toggleSearchFocus = ()=>{
       const input = document.getElementsByClassName("location-search-input");
       if(!input[0]){
@@ -230,12 +114,6 @@ export default class Map extends React.Component{
                     
                 }}  
                 >
-                <Marker icon="https://maps.google.com/mapfiles/kml/paddle/blu-stars.png" style={{width: "1.5em"}} position={this.props.center}/>
-                
-                <MarkerClusterer
-                    options={options}>
-                        {(clusterer)=> this.renderTestAds(clusterer)}
-                </MarkerClusterer>
 
                 <MarkerClusterer
                     options={options}>
@@ -248,7 +126,7 @@ export default class Map extends React.Component{
                     options={{
                         fullscreenControl: false
                   }}
-                  ></StreetViewPanorama>
+                ></StreetViewPanorama>
                 
             </GoogleMap>     
         );
