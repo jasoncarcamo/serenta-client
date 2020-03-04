@@ -2,6 +2,7 @@ import React from "react";
 import TokenService from "../../Services/TokenService";
 import SpacesContext from "../../Contexts/SpacesContext/SpacesContext";
 import "./PostAd.css";
+import LoadingIcon from "../LoadingIcon/LoadingIcon";
 
 export default class PostAd extends React.Component{
     constructor(props){
@@ -20,7 +21,8 @@ export default class PostAd extends React.Component{
             price: "",
             includes: "",
             special_comments: "",
-            error: ""
+            error: "",
+            loading: false
         };
     };
 
@@ -95,7 +97,11 @@ export default class PostAd extends React.Component{
     handleSubmit = (e)=>{
         e.preventDefault();
 
-        fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${this.getAddress()}&key=${process.env.REACT_APP_API_KEY}`)
+        this.setState({
+            loading: true
+        })
+
+        fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${this.getAddress()}&key=AIzaSyAAPqYeOSuJKs63H8A4NwaKp8fjVZo_jao`)
             .then( locationRes => {
                 if(!locationRes.ok){
                     locationRes.json().then( e => Promise.reject(e));
@@ -137,15 +143,19 @@ export default class PostAd extends React.Component{
                         return adsRes.json();
                     })
                     .then( adsData =>{
-                        
-                        this.setState({ error: "Success"});
+
+                        this.setState({
+                            loading: false
+                        });
+
                         this.context.refresh();
+
                         this.props.history.push("/");
                     })
-                    .catch( adsErr => this.setState({ error: adsErr.error }))
+                    .catch( adsErr => this.setState({ error: adsErr.error, loading: false }))
 
             })
-            .catch( locationErr => { this.setState({ error: locationErr.error })})
+            .catch( locationErr => { this.setState({ error: locationErr.error, loading: false })})
     }
 
     render(){
@@ -288,7 +298,7 @@ export default class PostAd extends React.Component{
                             htmlFor="register-ad--special-comments">Comments:</label>
                         <textarea value={this.state.special_comments} onChange={this.handleSpecialComments}/>
 
-
+                        {this.state.loading ? <LoadingIcon/> : ""}
                         {this.state.error ? <p>{this.state.error}</p> : ""}
 
                         <button id="post-ad-submit" type="submit">Post Ad</button>

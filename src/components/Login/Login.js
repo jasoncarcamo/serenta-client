@@ -57,7 +57,7 @@ export default class Login extends React.Component{
                 TokenService.saveToken(resData.token);
 
                 this.context.refresh();
-                
+
                 this.setState({
                     loading: false
                 });
