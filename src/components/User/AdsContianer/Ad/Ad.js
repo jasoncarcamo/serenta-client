@@ -34,6 +34,7 @@ export default class Ad extends React.Component{
             <section className="user-ad">
                 
                 <p>You have {this.props.ad.space_type === "Apartment" ? "an apartment" : " a bedroom"} listed</p>
+                <p><strong>Views: </strong>{this.props.ad.views}</p>
 
                 <p><strong>Address:</strong> {this.props.ad.address} {this.props.ad.city} {this.props.ad.state} {this.props.ad.zip_code}</p>
 
@@ -105,7 +106,7 @@ export default class Ad extends React.Component{
             deletionLoading: true
         })
 
-        fetch(`http://localhost:8000/api/living-space/${this.props.ad.id}`, {
+        fetch(`https://intense-wave-93060.herokuapp.com/api/living-space/${this.props.ad.id}`, {
             method: "DELETE",
             headers: {
                 'content-type': "application/json",
@@ -120,7 +121,7 @@ export default class Ad extends React.Component{
                 return res.json();
             })
             .then( resData => {
-                console.log(resData)
+                
                 this.setState({
                     deletionLoading: false,
                     delete: false,

@@ -128,7 +128,7 @@ export default class Register extends React.Component{
             loading: true
         });
 
-        fetch("http://localhost:8000/api/register", {
+        fetch("https://intense-wave-93060.herokuapp.com/api/register", {
             method: "POST",
             headers: {
                 'content-type': "application/json"

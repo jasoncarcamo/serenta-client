@@ -36,6 +36,10 @@ class App extends React.Component {
 
     componentDidMount(){
         console.log(VisitorService.hasToken())
+        if(!VisitorService.hasToken()){
+            VisitorService.saveToken();
+        };
+
         this.enableGps();
 
         this.setState({

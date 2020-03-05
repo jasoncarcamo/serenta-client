@@ -35,7 +35,7 @@ export default class Login extends React.Component{
             loading: true
         })
 
-        fetch(`http://localhost:8000/api/login`, {
+        fetch(`https://intense-wave-93060.herokuapp.com/api/login`, {
             method: "POST",
             headers: {
                 'content-type': "application/json"

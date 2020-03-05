@@ -16,7 +16,8 @@ export default class SearchSpaces extends React.Component{
         this.state = {
             address: "",
             lat: "",
-            lng: ""
+            lng: "",
+            error: ""
         }
     };
 
@@ -151,7 +152,7 @@ export default class SearchSpaces extends React.Component{
                 this.props.searchArea(resData.results[0].geometry.location.lat, resData.results[0].geometry.location.lng, zoom);
 
             })
-            .catch( err => { console.log(err)})
+            .catch( err => { this.setState({error: err})});
     }
 
     render(){

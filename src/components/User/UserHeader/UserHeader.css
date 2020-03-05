@@ -5,10 +5,12 @@
 #user-header button{
     display: block;
     font-size: 1em;
+    margin: 10em 4em 0 auto;
     width: 6em;
     height: 3em;
-    margin: 10em 4em 0 auto;
-    border: none;
+    background-color: white;
+    border-radius: 1em;
+    border: .2em solid black;
 }
 
 @media screen and (max-width: 770px){

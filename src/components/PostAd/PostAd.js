@@ -111,7 +111,7 @@ export default class PostAd extends React.Component{
             })
             .then( locationData => {            
 
-                fetch(`http://localhost:8000/api/living-space`, {
+                fetch(`https://intense-wave-93060.herokuapp.com/api/living-space`, {
                     method: "POST",
                     headers: {
                         'content-type': "application/json",

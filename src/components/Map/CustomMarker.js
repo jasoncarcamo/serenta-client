@@ -1,21 +1,15 @@
 import React from "react";
 import {Marker, InfoWindow} from "@react-google-maps/api";
 import "./CustomMarker.css";
-
-const windowsInfoStyle = {
-    width: "35em",
-};
-
-const mobileInfoStyle = {
-    width: "100%",
-};
+import TokenService from "../../Services/TokenService";
 
 export default class Customarker extends React.Component{
     constructor(props){
         super(props);
         this.state = {
             screenWidth: window.innerWidth,
-            open: false
+            open: false,
+            error: ""
         };
     };
 
@@ -32,15 +26,23 @@ export default class Customarker extends React.Component{
     }
 
     getAddress = ()=>{
+
         return this.props.ad.address + " " + this.props.ad.city + " " + this.props.ad.state + " " + this.props.ad.zip_code;
     }
 
     addressForMap = ()=>{
-        return `https://google.com/maps/search/?api=1&query=${this.props.ad.address}+${this.props.ad.city}+${this.props.ad.state}+${this.props.ad.zip_code}`;
+
+        return `https://google.com/maps/search/?api=1&query=${this.addressForDirections()}+${this.props.ad.city}+${this.props.ad.state}+${this.props.ad.zip_code}`;
+    }
+
+    addressForDirections = ()=>{
+        let address = this.props.ad.address.split(" ").join("+");
+
+        return address;
     }
 
     renderAdInfo = ()=>{
-        console.log(this.props.ad)
+
         return (
             <InfoWindow 
                 position={this.props.position}
@@ -55,7 +57,7 @@ export default class Customarker extends React.Component{
                         
                         <p>
                             <strong>Address: </strong>
-                            <a href={this.addressForMap()} target="_blank">{this.getAddress()}</a>
+                            <a href={this.addressForMap()}>{this.getAddress()}</a>
                             
                         </p>
 
@@ -107,11 +109,30 @@ export default class Customarker extends React.Component{
         this.setState({
             open: true
         });
+        
+        fetch(`https://intense-wave-93060.herokuapp.com/api/living-space/view/${this.props.ad.id}`, {
+            method: "PATCH",
+            headers: {
+                'content-type': "application/json"
+            }
+        })
+            .then( res => {
+                if(!res.ok){
+                    return res.json().then( e => Promise.reject(e));
+                };
+
+                return res.json();
+            })
+            .then( resData => {
+
+                return;
+            })
+            .catch( err => this.setState({ error: err.error }))
 
     }
 
     render(){
-        
+
         return (
             <section className="marker">
                 

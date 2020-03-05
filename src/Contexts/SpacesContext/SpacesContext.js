@@ -18,7 +18,7 @@ export class SpacesProvider extends React.Component{
     };
 
     componentDidMount(){
-        fetch(`http://localhost:8000/api/living-space`, {
+        fetch(`https://intense-wave-93060.herokuapp.com/api/living-space`, {
             headers: {
                 'content-type': "application/json",
             }
@@ -61,7 +61,7 @@ export class SpacesProvider extends React.Component{
             ads: this.state.ads,
             refresh: this.refresh
         };
-        console.log(this.state)
+        
         return (
             <SpacesContext.Provider value={value}>
                 {this.state.loading ? <p>Loading screen</p> : this.props.children}

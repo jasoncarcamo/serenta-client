@@ -22,7 +22,7 @@ export default class User extends React.Component{
     }
 
     render(){
-        console.log(this.state.ads, this.context.ads)
+        
         return (
             <section id="user-section">
 

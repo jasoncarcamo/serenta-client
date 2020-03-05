@@ -11,7 +11,12 @@
     background-color: white;
     transform: translateY(0);
     animation: display-filter .4s ease-in;
-    overflow: hidden;
+    overflow: auto;
+}
+
+#filter-spaces-form{
+    height: 100%;
+    padding: 0;
 }
 
 #filter-spaces-cancel-filter{
@@ -28,17 +33,18 @@
 #filter-spaces-fieldset{
     display: flex;
     flex-direction: column;
-    align-content: center;
-    justify-content: center;
+    justify-content: space-between;
+    height: 100%;
     margin: 0;
-    padding: 0;
+    padding: 7%;
     border: none;
 }
 
 #filter-spaces-fieldset label, #filter-spaces-fieldset select, #filter-spaces-fieldset p{
     display: block;
-    width: 50%;
+    width: 40%;
     margin: 0 auto;
+    font-size: 1em;
 }
 
 #filter-spaces-fieldset p{
@@ -63,7 +69,7 @@
 #confirm-filter-btns{
     display: flex;
     justify-content: space-evenly;
-    margin: 3.5em auto;
+    margin: 7em auto;
 }
 
 #confirm-filter-btns button{

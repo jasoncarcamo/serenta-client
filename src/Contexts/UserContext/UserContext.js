@@ -24,20 +24,19 @@ export class UserProvider extends React.Component{
         if(TokenService.hasToken()){
             
             this.getInfo();
-            this.getAds();
 
         };
     }
 
     getInfo = ()=>{
         Promise.all([
-            fetch("http://localhost:8000/api/user", {
+            fetch("https://intense-wave-93060.herokuapp.com/api/user", {
                 headers: {
                     'content-type': "application/json",
                     'authorization': `bearer ${TokenService.getToken()}`
                 }
             }),
-            fetch("http://localhost:8000/api/living-space", {
+            fetch("https://intense-wave-93060.herokuapp.com/api/living-space", {
                 headers: {
                     'content-type': "application/json",
                     'authorization': `bearer ${TokenService.getToken()}`
@@ -66,7 +65,7 @@ export class UserProvider extends React.Component{
     }
 
     getAds = ()=>{
-        fetch("http://localhost:8000/api/living-space", {
+        fetch("https://intense-wave-93060.herokuapp.com/api/living-space", {
             headers: {
                 'content-type': "application/json",
                 'authorization': `bearer ${TokenService.getToken()}`
@@ -99,7 +98,7 @@ export class UserProvider extends React.Component{
         const value = {
             ads: this.state.ads
         };
-        console.log(this.state)
+        
         return (
             <UserContext.Provider value={value}>
                 {this.props.children}

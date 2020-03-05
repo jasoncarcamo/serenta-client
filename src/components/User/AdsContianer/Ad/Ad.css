@@ -12,6 +12,9 @@
     height: 2em;
     font-size: 1em;
     margin-top: 2em;
+    background-color: white;
+    border-radius: 1em;
+    border: .2em solid black;
 }
 
 .ad-deletion-box{
