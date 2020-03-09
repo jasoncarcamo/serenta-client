@@ -20,7 +20,13 @@
 
 #post-ad-fieldset input{
     height: 2.6em;
-    width: 25em;
+    width: 25em;    
+    border: .06em solid lightgray;
+    border-radius: .3em;
+}
+
+#post-ad-fieldset input:hover{
+    border: .06em soid lightskyblue;
 }
 
 #post-ad-fieldset select{
@@ -33,6 +39,10 @@
     width: 90%;
     margin: 0 auto;
     height: 13em;
+}
+
+#post-ad-fieldset p{
+    text-align: center;
 }
 
 #post-ad-submit{

@@ -36,12 +36,21 @@
     width: 25em;
     height: 2.5em;
     margin: 0 auto;
-    border: .06em solid black;
+    border: .06em solid lightgray;
+    border-radius: .3em;
+}
+
+#register-fieldset input:hover{
+    border: .06em solid lightskyblue;
 }
 
 #register-fieldset div{
     width: 18.5em;
     margin: 0 auto;
+}
+
+#register-fieldset p{
+    text-align: center;
 }
 
 #register-submit{

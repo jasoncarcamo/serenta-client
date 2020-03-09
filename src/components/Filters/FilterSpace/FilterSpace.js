@@ -65,7 +65,7 @@ export default class FilterSpaces extends React.Component{
 
                     <form id="filter-spaces-form">
                         <fieldset id="filter-spaces-fieldset">
-                            <button id="filter-spaces-cancel-filter" onClick={this.cancelFilter}>Cancel filter</button>
+                            <button id="filter-spaces-cancel-filter" onClick={this.cancelFilter}>Reset filter</button>
 
                             <label htmlFor="register-ad-type">Living space type:</label>
                             <select 

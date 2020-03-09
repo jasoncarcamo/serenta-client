@@ -28,7 +28,16 @@
     width: 25em;
     height: 2.5em;
     margin: 0 auto;
-    border: .06em solid black;
+    border: .06em solid lightgray;
+    border-radius: .3em;
+}
+
+#login-fieldset input:hover{
+    border: .06em solid lightskyblue;
+}
+
+#login-fieldset p{
+    text-align: center;
 }
 
 #login-submit{
