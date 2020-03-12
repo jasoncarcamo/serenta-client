@@ -1,4 +1,6 @@
 import React from "react";
+import LoadingScreen from "../../components/LoadingScreen/LoadingScreen";
+import Loading from "react-loading";
 
 const SpacesContext = React.createContext({
     ads: [],
@@ -64,7 +66,7 @@ export class SpacesProvider extends React.Component{
         
         return (
             <SpacesContext.Provider value={value}>
-                {this.state.loading ? <p>Loading screen</p> : this.props.children}
+                {this.state.loading ? <LoadingScreen/> : this.props.children}
             </SpacesContext.Provider>
         );
     };

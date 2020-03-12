@@ -42,7 +42,7 @@
 
 #filter-spaces-fieldset label, #filter-spaces-fieldset select, #filter-spaces-fieldset p{
     display: block;
-    width: 40%;
+    width: 8em;
     margin: 0 auto;
     font-size: 1em;
 }
@@ -60,16 +60,27 @@
     position: absolute;
     z-index: 2;
     width: 6.5em;
+    height: 2em;
     left: 50%;
     transform: translateX(-50%);
     bottom: 1.5em;
     font-size: 1em;
+    border: none;
+    border-radius: .3em;
+    background-color: skyblue;
+    color: white;
+}
+
+#filter-ad-price{
+    width: 18em;
+    height: 2.5em;
+    transform: translateX(-22%);
 }
 
 #confirm-filter-btns{
     display: flex;
     justify-content: space-evenly;
-    margin: 7em auto;
+    margin: 8em auto;
 }
 
 #confirm-filter-btns button{

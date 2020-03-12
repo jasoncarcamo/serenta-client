@@ -35,11 +35,6 @@ class App extends React.Component {
     static contextType = SpacesContext;
 
     componentDidMount(){
-        console.log(VisitorService.hasToken())
-        if(!VisitorService.hasToken()){
-            VisitorService.saveToken();
-        };
-
         this.enableGps();
 
         this.setState({

@@ -132,7 +132,7 @@ export default class FilterSpaces extends React.Component{
                             <p>Rent under:</p>
                             <label htmlFor="register-ad-price">
                                 <input 
-                                id="register-ad-price" 
+                                id="filter-ad-price" 
                                 type="text"
                                 name="price"
                                 placeholder="E.g. 1500"
