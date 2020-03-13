@@ -35,7 +35,7 @@ export default class FilterSpaces extends React.Component{
                 <button onClick={this.confirmFilter}>Filter</button>
                 <button onClick={this.toggleFilter}>Cancel</button>
             </section>
-        )
+        );
     }
 
     confirmFilter = ()=>{
