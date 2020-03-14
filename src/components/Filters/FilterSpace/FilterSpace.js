@@ -55,7 +55,7 @@ export default class FilterSpaces extends React.Component{
             bathroom_amount: "1 bathroom",
             pets: "No pets",
             price: ""
-        })
+        });
     }
 
     displayFilter = ()=>{
