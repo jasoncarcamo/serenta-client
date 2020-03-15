@@ -58,7 +58,7 @@ export default class FilterSpaces extends React.Component{
         });
     }
 
-    displayFilter = ()=>{
+    displayFilter = () => {
 
         return (
             <section id="filter-spaces-section">
